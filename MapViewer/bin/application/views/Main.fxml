@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane prefHeight="680.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+   <children>
+      <VBox prefHeight="680.0" prefWidth="640.0">
+         <children>
+            <ToolBar prefHeight="39.0" prefWidth="637.0">
+              <items>
+                <Button fx:id="loadBtn" mnemonicParsing="false" text="Load" />
+                  <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" />
+                  <Button fx:id="enlargeBtn" mnemonicParsing="false" text="Enlarge" />
+                  <Button fx:id="shrinkBtn" mnemonicParsing="false" text="Shrink" />
+                  <Button fx:id="setBoatBtn" mnemonicParsing="false" text="Set Boat" />
+                  <Button fx:id="setAxeBtn" mnemonicParsing="false" text="Set Axe" />
+                  <Button fx:id="clearPosBtn" mnemonicParsing="false" text="Clear Position" />
+              </items>
+            </ToolBar>
+            <TilePane fx:id="mapviewer" prefHeight="640.0" prefWidth="600.0" />
+         </children>
+      </VBox>
+   </children>
+</Pane>
