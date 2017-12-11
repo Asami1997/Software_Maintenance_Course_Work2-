@@ -65,6 +65,8 @@ public class MainController {
     		viewLbl.setText((100*scale) + "%");
     		tilemap.render(mapviewer, scale);
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
+    		
+    		enlargeBtn.getStyleClass().add("pressed");
     	}
     	
     	public void shrink(Event e) {
