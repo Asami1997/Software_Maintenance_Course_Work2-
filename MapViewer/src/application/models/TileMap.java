@@ -12,7 +12,7 @@ import javafx.scene.layout.TilePane;
 public class TileMap {
 
 	private int[][] map;
-	private Image tileset;
+	private String tileset;
 	private int numCols;
 	private int numRows;
 	
@@ -20,7 +20,7 @@ public class TileMap {
 		return map;
 	}
 	
-	public Image getTileSet() {
+	public String getTileSet() {
 		return tileset;
 	}
 	
@@ -64,17 +64,20 @@ public class TileMap {
 	
 	public void loadTileSet(String s) {
 		
-		tileset = new Image(s);
+		tileset = s;
 		
 	}
 	
 	//render map on tilepane
-	public void render(TilePane pane) {
+	public void render(TilePane pane, double scale) {
 		
 		if(tileset == null) return;
 		
-		pane.setPrefColumns(numCols);
-		pane.setPrefRows(numRows);
+		pane.getChildren().clear();
+		pane.setMinHeight(16*scale*numRows);
+		pane.setMinWidth(16*scale*numCols);
+		
+		Image image = new Image(tileset, 320*scale, 32*scale, true, true);
 		
 		for(int row=0; row<numRows; row++) {
 			for(int col=0; col<numCols; col++) {
@@ -82,9 +85,10 @@ public class TileMap {
 				int tile_row = tile/20;
 				int tile_col = tile%20;
 				
-				ImageView view = new ImageView(tileset);
+				ImageView view = new ImageView(image);
 				//viewport helps to show part of tileset, as a tile
-				view.setViewport(new Rectangle2D(tile_col*16, tile_row*16, 16, 16));
+				view.setViewport(new Rectangle2D(tile_col*16*scale, tile_row*16*scale, 16*scale, 16*scale));
+				view.setPreserveRatio(false);
 				
 				pane.getChildren().add(view);
 			}
