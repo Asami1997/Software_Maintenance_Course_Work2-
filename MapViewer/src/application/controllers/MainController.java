@@ -5,6 +5,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.Label;
 
@@ -40,21 +41,59 @@ public class MainController {
     @FXML
     private TilePane mapviewer;
     
+    @FXML
+    private ImageView axe;
+    
+    private double axeXCoordinate;
+    
+    private double axeYCoordinate; 
+    
     private TileMap tilemap;
     
     private double scale = 1;
     
     	public void initialize() {
     		
+    		//getting the coordinates of the axe
+    		
+    		
     		tilemap = new TileMap();
     		tilemap.loadMap("/map.map");
     		tilemap.loadTileSet("/images/tileset.gif");
     		
     		tilemap.render(mapviewer, scale);
+    	
+    		
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
     		
     		enlargeBtn.setOnMouseClicked(e -> { this.enlarge(e); });
     		shrinkBtn.setOnMouseClicked(e -> { this.shrink(e); });
+    		
+    		//initial position of the axe
+            axeXCoordinate = axe.getX();
+    		
+    		axeYCoordinate = axe.getY();
+    		
+    		System.out.println(axeXCoordinate);
+    		
+    		System.out.println(axeYCoordinate);
+    		
+    	
+    		//changing the axe position by translating
+    		axe.setTranslateX(30);
+    		
+    		axe.setTranslateY(30);
+    		
+    		
+    	
+    		//updating the variables
+    		axeXCoordinate = axe.getTranslateX();
+      		
+      		axeYCoordinate = axe.getTranslateY();
+      		
+      		System.out.println(axeXCoordinate);
+      		
+      		System.out.println(axeYCoordinate);
     		
     	}
     	
@@ -77,5 +116,7 @@ public class MainController {
     		tilemap.render(mapviewer, scale);
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
     	}
+    	
+    
     
 }
