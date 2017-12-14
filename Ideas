@@ -1,0 +1,12 @@
+Day time and night time themes for game.
+day time has normal animation: axe, boat, player, and water tiles fix
+nighttime we change the player look and the map color, change the axe and boat 
+how?
+well the player has made all the sprites in a gif file in the game, 
+if we re-color the sprites and put tose new ones in a seperate gif file and once a button is clicked, 
+we can attach the 2 gif files to two different buttons.
+
+
+
+
+Axe and boat location jumble.
