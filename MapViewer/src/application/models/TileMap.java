@@ -1,6 +1,8 @@
 package application.models;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -15,6 +17,7 @@ public class TileMap {
 	private String tileset;
 	private int numCols;
 	private int numRows;
+	
 	
 	public int[][] getMap(){
 		return map;
@@ -76,7 +79,7 @@ public class TileMap {
 		pane.getChildren().clear();
 		pane.setMinHeight(16*scale*numRows);
 		pane.setMinWidth(16*scale*numCols);
-		
+
 		Image image = new Image(tileset, 320*scale, 32*scale, true, true);
 		
 		for(int row=0; row<numRows; row++) {
@@ -92,7 +95,10 @@ public class TileMap {
 				
 				pane.getChildren().add(view);
 			}
+			
+			
 		}
+		
 		
 	}
 	

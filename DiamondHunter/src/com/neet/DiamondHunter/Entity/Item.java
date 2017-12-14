@@ -46,6 +46,7 @@ public class Item extends Entity{
 	
 	public void draw(Graphics2D g) {
 		setMapPosition();
+		//the axe and boast are set in the map here ?? maybe
 		g.drawImage(sprite, x + xmap - width / 2, y + ymap - height / 2, null);
 	}
 	

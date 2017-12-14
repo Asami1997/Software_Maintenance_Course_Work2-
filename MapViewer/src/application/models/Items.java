@@ -4,7 +4,6 @@ public class Items {
 
 	private int[] axe_pos;
 	private int[] boat_pos;
-	
 	public int[] getAxePos() {
 		
 		return axe_pos;
