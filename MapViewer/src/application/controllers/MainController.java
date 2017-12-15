@@ -221,9 +221,9 @@ public class MainController {
                  
                  event.consume();
                  
-                 axe.setTranslateX(tileRow);
+                // axe.setTranslateX(tileRow);
                  
-                 axe.setTranslateY(tileCol);
+                 //axe.setTranslateY(tileCol);
                  
                 
              });

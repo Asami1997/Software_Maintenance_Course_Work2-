@@ -33,7 +33,7 @@
                   <ScrollPane fx:id="mapscroll" maxHeight="640.0" maxWidth="701.0" prefHeight="516.0" prefWidth="701.0" HBox.hgrow="ALWAYS">
                      <content>
                      
-                     <StackPane alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
+                     <StackPane fx:id="stackPane"  alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
                      
                      <children>
                      
