@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
+import application.controllers.*;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +17,10 @@ public class TileMap {
 	private String tileset;
 	private int numCols;
 	private int numRows;
-	
+	private Image image;
+	private ImageView view;
+	private int tileIndex;
+	MainController mainController = new MainController();
 	
 	public int[][] getMap(){
 		return map;
@@ -71,7 +74,7 @@ public class TileMap {
 		
 	}
 	
-	//render map on tilepane
+	//render map on tile pane
 	public void render(TilePane pane, double scale) {
 		
 		if(tileset == null) return;
@@ -88,12 +91,20 @@ public class TileMap {
 				int tile_row = tile/20;
 				int tile_col = tile%20;
 				
-				ImageView view = new ImageView(image);
+				 view = new ImageView(image);
 				//viewport helps to show part of tileset, as a tile
 				view.setViewport(new Rectangle2D(tile_col*16*scale, tile_row*16*scale, 16*scale, 16*scale));
 				view.setPreserveRatio(false);
 				
+	
 				pane.getChildren().add(view);
+				
+				//getting index of view in the pane
+				
+		        tileIndex = pane.getChildren().indexOf(view);
+		        
+				mainController.dropAxeBoat(view ,tileIndex);
+	
 			}
 			
 			
