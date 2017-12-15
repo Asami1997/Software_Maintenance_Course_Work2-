@@ -1,13 +1,24 @@
 package application.controllers;
 
+import com.sun.javafx.event.EventHandlerManager;
+
 import application.models.TileMap;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.control.Label;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 
 public class MainController {
     
@@ -35,6 +46,8 @@ public class MainController {
     @FXML
     private ScrollPane mapscroll;
     
+    @FXML StackPane stackPane;
+    
     @FXML
     private Label viewLbl;
     
@@ -43,6 +56,8 @@ public class MainController {
     
     @FXML
     private ImageView axe;
+    
+    private Image axeImage;
     
     private double axeXCoordinate;
     
@@ -56,7 +71,7 @@ public class MainController {
     		
     		//getting the coordinates of the axe
     		
-    		
+    		axeImage = new Image("/images/axe.gif");
     		tilemap = new TileMap();
     		tilemap.loadMap("/map.map");
     		tilemap.loadTileSet("/images/tileset.gif");
@@ -80,9 +95,9 @@ public class MainController {
     		
     	
     		//changing the axe position by translating
-    		axe.setTranslateX(30);
+    		axe.setTranslateX(0);
     		
-    		axe.setTranslateY(30);
+    		axe.setTranslateY(0);
     		
     		
     	
@@ -94,7 +109,30 @@ public class MainController {
       		System.out.println(axeXCoordinate);
       		
       		System.out.println(axeYCoordinate);
+      		
+      		
+      	
+      		//drag the axe imageView
+      		axe.setOnDragDetected(new EventHandler<MouseEvent>() {
+                @Override
+               public void handle(MouseEvent events) {
+                   Dragboard storeImage =axe.startDragAndDrop(TransferMode.MOVE);
+                   ClipboardContent content = new ClipboardContent();
+                   content.putImage(axe.getImage());
+                   storeImage.setContent(content); // here i am getting error
+                   events.consume();
+
+                   System.out.println("Dragging");
+
+               }
+           });
     		
+      		
+      		//drop the axe imageView
+            //we should have a target for dropping the image 
+ 
+      	
+      		
     	}
     	
     	public void enlarge(Event e) {
@@ -117,6 +155,9 @@ public class MainController {
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
     	}
     	
+ 
+    	//This function will handle the dropping of either the axe or boat
     
-    
+
+        
 }
