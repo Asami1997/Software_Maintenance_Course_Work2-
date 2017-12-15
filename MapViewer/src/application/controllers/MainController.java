@@ -158,6 +158,34 @@ public class MainController {
  
     	//This function will handle the dropping of either the axe or boat
     
+         public void dropAxeBoat(ImageView target ,int tileIndex){
+        	 
+        	 target.setOnDragOver(event -> {
+                 /* data is dragged over the target */
+                 //System.out.println("onDragOver");
 
+                 /*
+                  * accept it only if it is not dragged from the same node and if it
+                  * has a string data
+                  * 
+                  * code for detecting if a tile is blocked or not or if the user is dragging to
+                  * outside the map should go here
+                  * 
+                  */
+        		 
+        		 
+                 if (event.getGestureSource() != target) {
+                     /* allow for both copying and moving, whatever user chooses */
+                     event.acceptTransferModes(TransferMode.MOVE);
+                     
+                     System.out.println("accepted");
+                 }
+
+                 event.consume();
+             });
+        	 
+        	 
+         }
+    	
         
 }
