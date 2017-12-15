@@ -185,6 +185,20 @@ public class MainController {
              });
         	 
         	 
+        
+        	 
+        	 
+        	 
+        	 target.setOnDragDone(event -> {
+                 /* the drag-and-drop gesture ended */
+                 System.out.println("onDragDone");
+                 /* if the data was successfully moved, clear it */
+                 if (event.getTransferMode() == TransferMode.MOVE) {
+                   System.out.println("Successfully dropped");
+                 }
+
+                 event.consume();
+             });
          }
     	
         
