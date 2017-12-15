@@ -185,7 +185,49 @@ public class MainController {
              });
         	 
         	 
-        
+        	 //the target here is the tile in the tilepane ?? you cant do that , it has to be in stack pane
+        	 target.setOnDragDropped(event -> {
+                 /* data dropped */
+                 System.out.println("onDragDropped");
+                 
+                 
+                 /* if there is a string data on dragboard, read it and use it */
+                 Dragboard db = event.getDragboard();
+                 boolean success = false;
+                 if (db.hasString()) {
+                     
+                     success = true;
+                  }
+                 /*
+                  * let the source know whether the string was successfully
+                  * transferred and used
+                  */
+                 event.setDropCompleted(success);
+
+                 System.out.println(success);
+             	
+                 //image needs to be moved to the place dropped
+             	//get the coordinates of the tile and translate the image there ?
+                
+                 System.out.println(tileIndex);
+                 
+                 int tileRow = tileIndex/40;
+                 
+                 int tileCol = tileIndex%40;
+                 
+                 System.out.println(tileRow);
+                 
+                 System.out.println(tileCol);
+                 
+                 event.consume();
+                 
+                 axe.setTranslateX(tileRow);
+                 
+                 axe.setTranslateY(tileCol);
+                 
+                
+             });
+        	 
         	 
         	 
         	 
