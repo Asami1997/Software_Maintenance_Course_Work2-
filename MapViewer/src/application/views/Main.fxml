@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
@@ -33,7 +34,7 @@
                   <ScrollPane fx:id="mapscroll" maxHeight="640.0" maxWidth="701.0" prefHeight="516.0" prefWidth="701.0" HBox.hgrow="ALWAYS">
                      <content>
                      
-                     <StackPane fx:id="stackPane"  alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
+                     <StackPane fx:id="stackPane" alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
                      
                      <children>
                      
@@ -43,12 +44,7 @@
                            </children>
                            
                            </TilePane>
-                              <ImageView fx:id="axe" fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Resources/images/axe.gif" />
-                                 </image>
-                              </ImageView>
-                           
+                         
                              </children>
                        
                   

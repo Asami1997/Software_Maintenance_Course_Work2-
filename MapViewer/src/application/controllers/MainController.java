@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -54,10 +55,11 @@ public class MainController {
     @FXML
     private TilePane mapviewer;
     
-    @FXML
-    private ImageView axe;
     
     private Image axeImage;
+    
+    //for dragging
+    private ImageView source;
     
     private double axeXCoordinate;
     
@@ -67,71 +69,56 @@ public class MainController {
     
     private double scale = 1;
     
+    ImageView axeImageView;
     	public void initialize() {
     		
     		//getting the coordinates of the axe
-    		
+    
     		axeImage = new Image("/images/axe.gif");
+    		
+    		axeImageView = new ImageView(axeImage);
     		tilemap = new TileMap();
     		tilemap.loadMap("/map.map");
     		tilemap.loadTileSet("/images/tileset.gif");
     		
     		tilemap.render(mapviewer, scale);
     	
+    		source  = TileMap.axeImageView;
     		
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
     		
     		enlargeBtn.setOnMouseClicked(e -> { this.enlarge(e); });
     		shrinkBtn.setOnMouseClicked(e -> { this.shrink(e); });
     		
-    		//initial position of the axe
-            axeXCoordinate = axe.getX();
-    		
-    		axeYCoordinate = axe.getY();
-    		
-    		System.out.println(axeXCoordinate);
-    		
-    		System.out.println(axeYCoordinate);
-    		
-    	
-    		//changing the axe position by translating
-    		axe.setTranslateX(0);
-    		
-    		axe.setTranslateY(0);
-    		
-    		
-    	
-    		//updating the variables
-    		axeXCoordinate = axe.getTranslateX();
-      		
-      		axeYCoordinate = axe.getTranslateY();
+  
       		
       		System.out.println(axeXCoordinate);
       		
       		System.out.println(axeYCoordinate);
       		
-      		
-      	
-      		//drag the axe imageView
-      		axe.setOnDragDetected(new EventHandler<MouseEvent>() {
-                @Override
-               public void handle(MouseEvent events) {
-                   Dragboard storeImage =axe.startDragAndDrop(TransferMode.MOVE);
-                   ClipboardContent content = new ClipboardContent();
-                   content.putImage(axe.getImage());
-                   storeImage.setContent(content); // here i am getting error
-                   events.consume();
+ 
+        	System.out.println("in this function");
+        	
+    		//drag the axe imageView
+   		source.setOnDragDetected(new EventHandler<MouseEvent>() {
+             @Override
+            public void handle(MouseEvent events) {
+                Dragboard storeImage =TileMap.axeImageView.startDragAndDrop(TransferMode.MOVE);
+                ClipboardContent content = new ClipboardContent();
+                content.putImage(axeImage);
+                storeImage.setContent(content); // here i am getting error
+                events.consume();
 
-                   System.out.println("Dragging");
-                 
-                   //removing from its starting position in stackPane when the dragging starts
-                   
-                   stackPane.getChildren().remove(axe);
-                   
-               }
-           });
-    		
-      		
+                System.out.println("Dragging");
+              
+                //removing from its starting position in stackPane when the dragging starts
+                
+//                 stackPane.getChildren().remove(axe);
+                
+            }
+        });
+   		
+   		
       		//drop the axe imageView
             //we should have a target for dropping the image 
  
@@ -164,6 +151,7 @@ public class MainController {
     
          public void dropAxeBoat(ImageView target ,int tileIndex){
         	 
+   
         	 target.setOnDragOver(event -> {
                  /* data is dragged over the target */
                  //System.out.println("onDragOver");
@@ -185,6 +173,7 @@ public class MainController {
                      System.out.println("accepted");
                  }
 
+                 
                  event.consume();
              });
         	 
@@ -212,24 +201,19 @@ public class MainController {
              	
                  //image needs to be moved to the place dropped
              	//get the coordinates of the tile and translate the image there ?
-                
-                 System.out.println(tileIndex);
+               
                  
                  int tileRow = tileIndex/40;
                  
                  int tileCol = tileIndex%40;
                  
-                 System.out.println(tileRow);
                  
-                 System.out.println(tileCol);
-                 
-                 event.consume();
-                 
-                // axe.setTranslateX(tileRow);
-                 
-                 //axe.setTranslateY(tileCol);
+                 target.setImage(axeImage);
                  
                 
+                 event.consume();
+                
+        
              });
         	 
         	 
@@ -246,6 +230,5 @@ public class MainController {
                  event.consume();
              });
          }
-    	
-        
+         
 }
