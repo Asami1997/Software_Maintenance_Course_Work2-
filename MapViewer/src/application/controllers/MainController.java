@@ -123,7 +123,11 @@ public class MainController {
                    events.consume();
 
                    System.out.println("Dragging");
-
+                 
+                   //removing from its starting position in stackPane when the dragging starts
+                   
+                   stackPane.getChildren().remove(axe);
+                   
                }
            });
     		
