@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -47,7 +48,6 @@ public class MainController {
     @FXML
     private ScrollPane mapscroll;
     
-    @FXML StackPane stackPane;
     
     @FXML
     private Label viewLbl;
@@ -55,6 +55,8 @@ public class MainController {
     @FXML
     private TilePane mapviewer;
     
+    @FXML
+    private StackPane stackPane;
     
     private Image axeImage;
     
@@ -69,61 +71,45 @@ public class MainController {
     
     private double scale = 1;
     
-    ImageView axeImageView;
-    	public void initialize() {
-    		
-    		//getting the coordinates of the axe
+    int tileRow = -1;
     
-    		axeImage = new Image("/images/axe.gif");
-    		
-    		axeImageView = new ImageView(axeImage);
+    int tileCol = -1;          
+
+    ImageView axeImageView;
+
+        public void initialize() {
+        
+    		axeImage = new Image("/images/itemsq.jpeg", 16*scale, 16*scale, true, true);
+    				
     		tilemap = new TileMap();
     		tilemap.loadMap("/map.map");
     		tilemap.loadTileSet("/images/tileset.gif");
-    		
+  
     		tilemap.render(mapviewer, scale);
-    	
-    		source  = TileMap.axeImageView;
     		
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
-    		
     		enlargeBtn.setOnMouseClicked(e -> { this.enlarge(e); });
     		shrinkBtn.setOnMouseClicked(e -> { this.shrink(e); });
     		
-  
-      		
-      		System.out.println(axeXCoordinate);
-      		
+      		System.out.println(axeXCoordinate);  		
       		System.out.println(axeYCoordinate);
-      		
- 
         	System.out.println("in this function");
         	
+        	source  = TileMap.axeImageView;
     		//drag the axe imageView
-   		source.setOnDragDetected(new EventHandler<MouseEvent>() {
-             @Override
-            public void handle(MouseEvent events) {
-                Dragboard storeImage =TileMap.axeImageView.startDragAndDrop(TransferMode.MOVE);
-                ClipboardContent content = new ClipboardContent();
-                content.putImage(axeImage);
-                storeImage.setContent(content); // here i am getting error
-                events.consume();
+	   		source.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent events) {
+	                Dragboard storeImage = source.startDragAndDrop(TransferMode.MOVE);
+	                ClipboardContent content = new ClipboardContent();
+	                content.putImage(source.getImage());
+	                storeImage.setContent(content); 
+	                events.consume(); 
+	                System.out.println("Dragging");
+	            }
+	        });
+   		
 
-                System.out.println("Dragging");
-              
-                //removing from its starting position in stackPane when the dragging starts
-                
-//                 stackPane.getChildren().remove(axe);
-                
-            }
-        });
-   		
-   		
-      		//drop the axe imageView
-            //we should have a target for dropping the image 
- 
-      	
-      		
     	}
     	
     	public void enlarge(Event e) {
@@ -157,19 +143,15 @@ public class MainController {
                  //System.out.println("onDragOver");
 
                  /*
-                  * accept it only if it is not dragged from the same node and if it
-                  * has a string data
+                  * accept it only if it is not dragged from the same node 
                   * 
                   * code for detecting if a tile is blocked or not or if the user is dragging to
                   * outside the map should go here
                   * 
                   */
-        		 
-        		 
                  if (event.getGestureSource() != target) {
-                     /* allow for both copying and moving, whatever user chooses */
+                     /* allow for moving */
                      event.acceptTransferModes(TransferMode.MOVE);
-                     
                      System.out.println("accepted");
                  }
 
@@ -178,46 +160,24 @@ public class MainController {
              });
         	 
         	 
-        	 //the target here is the tile in the tilepane ?? you cant do that , it has to be in stack pane
         	 target.setOnDragDropped(event -> {
                  /* data dropped */
                  System.out.println("onDragDropped");
                  
-                 
                  /* if there is a string data on dragboard, read it and use it */
                  Dragboard db = event.getDragboard();
                  boolean success = false;
-                 if (db.hasString()) {
-                     
+                 if (db.hasImage()) {
+                	 target.setImage(db.getImage());
+                	 target.setViewport(new Rectangle2D(0,0, 16, 16));
+                	 //target.setImage(axeImage);
                      success = true;
-                  }
-                 /*
-                  * let the source know whether the string was successfully
-                  * transferred and used
-                  */
-                 event.setDropCompleted(success);
-
-                 System.out.println(success);
-             	
-                 //image needs to be moved to the place dropped
-             	//get the coordinates of the tile and translate the image there ?
-               
-                 
-                 int tileRow = tileIndex/40;
-                 
-                 int tileCol = tileIndex%40;
-                 
-                 
-                 target.setImage(axeImage);
-                 
+                 }
                 
-                 event.consume();
-                
-        
+                event.setDropCompleted(success);
+                event.consume();
              });
-        	 
-        	 
-        	 
+       
         	 
         	 target.setOnDragDone(event -> {
                  /* the drag-and-drop gesture ended */
@@ -225,10 +185,9 @@ public class MainController {
                  /* if the data was successfully moved, clear it */
                  if (event.getTransferMode() == TransferMode.MOVE) {
                    System.out.println("Successfully dropped");
-                 }
-
-                 event.consume();
+                 }   
+                    event.consume();
              });
          }
-         
+	
 }

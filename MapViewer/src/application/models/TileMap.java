@@ -81,16 +81,15 @@ public class TileMap {
 	}
 	
 	//render map on tile pane
-	public void render(TilePane pane, double scale ) {
-		
+	public void render(TilePane pane, double scale) {
 		
 		if(tileset == null) return;
 		
-	    Image axeImage = new Image("/images/itemsq.jpeg" , 320*scale, 32*scale, true, true);
-
-		pane.getChildren().clear();
+		pane.getChildren().clear();   
 		pane.setMinHeight(16*scale*numRows);
 		pane.setMinWidth(16*scale*numCols);
+		
+	    Image axeImage = new Image("/images/itemsq.jpeg" , 16*scale, 16*scale, true, true);
 
 		Image image = new Image(tileset, 320*scale, 32*scale, true, true);
 		
@@ -99,28 +98,14 @@ public class TileMap {
 				int tile = map[row][col];
 				int tile_row = tile/20;
 				int tile_col = tile%20;
-				
-			
-				
-				
-				//axe
-				
-			    int tileRow = tileIndex/40;
+			    int rowTilePane = tileIndex/40;
+                int colTilePane = tileIndex%40;
                 
-                int tileCol = tileIndex%40;
-                
-                //setting the axe 
-                if(tileRow == 22 && tileCol ==22){
-                	
-                	
+                //setting the axe intial position 
+                if(rowTilePane == 20 && colTilePane ==20){
                 	
                 	axeImageView = new ImageView(axeImage);
-                	
-                	//there is a problem here
-                	axeImageView.setViewport(new Rectangle2D(1*16*scale, 1*16*scale, 16*scale, 16*scale));
-                	
-    				axeImageView.setPreserveRatio(false);
-                	
+                  	
                 	pane.getChildren().add(axeImageView);
                 	
                 	//getting index of view in the pane
@@ -128,34 +113,26 @@ public class TileMap {
     		        tileIndex = pane.getChildren().indexOf(axeImageView);
     		        
     				mainController.dropAxeBoat(axeImageView ,tileIndex);
-                	
-    				
-				
+                		
 			}else{
 				
-		     	 view = new ImageView(image);
+	        	    view = new ImageView(image);
 					//viewport helps to show part of tileset, as a tile
-				view.setViewport(new Rectangle2D(tile_col*16*scale, tile_row*16*scale, 16*scale, 16*scale));
-				view.setPreserveRatio(false);
+		   		    view.setViewport(new Rectangle2D(tile_col*16*scale, tile_row*16*scale, 16*scale, 16*scale));
+		   		
+			    	view.setPreserveRatio(false);
 					
-
-				pane.getChildren().add(view);
+				    pane.getChildren().add(view);
+			
+				  //getting index of view in the pane
 				
-				//getting index of view in the pane
-				
-		        tileIndex = pane.getChildren().indexOf(view);
+		           tileIndex = pane.getChildren().indexOf(view);
 		        
-				mainController.dropAxeBoat(view ,tileIndex);
+				   mainController.dropAxeBoat(view ,tileIndex);			}
+                    			
 			}
-                        
-        				
-        
-		}
 		
-		
-		
-		
-	}
+	  }
 	
 	}
 }
