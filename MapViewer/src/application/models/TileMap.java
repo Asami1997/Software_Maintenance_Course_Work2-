@@ -12,6 +12,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 
 public class TileMap {
@@ -83,7 +84,7 @@ public void loadItemSet(String s) {
 	}
 	
 	//render map on tilepane
-	public void render(TilePane pane, double scale) {
+	public void render(GridPane pane, double scale) {
 		
 		if(tileset == null) return;
 		
@@ -124,6 +125,7 @@ public void loadItemSet(String s) {
 					
 				}
 				
+				GridPane.setConstraints(view, col, row);
 				view.setOnDragDetected(event -> {
 		            /* drag was detected, start drag-and-drop gesture */
 		            System.out.println("onDragDetected");
@@ -156,7 +158,8 @@ public void loadItemSet(String s) {
 				
 				view.setOnDragDropped(event -> {
 					System.out.println("Dropped");
-		    		Dragboard db = event.getDragboard();
+					if(tile_col!= 0 && tile_row!=1){
+							Dragboard db = event.getDragboard();
 		            boolean success = false;
 		            if (db.hasImage()) {
 		                System.out.println("Dropped: ");
@@ -172,6 +175,8 @@ public void loadItemSet(String s) {
 		            
 		            event.setDropCompleted(success);
 		            event.consume();
+					}
+		    	
 		            
 		        });				
 				

@@ -74,32 +74,18 @@ public class MainController {
 	    private Label viewLbl;
 	    
 	    @FXML
-	    private TilePane mapviewer;
+	    private GridPane mapviewer;
 	    
 	    @FXML
 	    private StackPane stackPane;
 	    
 	    private Image axeImage;
-	    
-	    //for dragging
-	    private ImageView source;
-	    
-	    private double axeXCoordinate;
-	    
-	    private double axeYCoordinate; 
-	    
+	  
 	    int tileRow = -1;
 	    
 	    int tileCol = -1;          
 
 	    ImageView axeImageView;
-
-	
-	
-	/*
-	@FXML
-	private Rectangle hintsRect;
-	*/
     
     private TileMap tilemap;
     
