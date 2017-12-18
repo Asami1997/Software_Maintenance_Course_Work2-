@@ -35,7 +35,7 @@
                      
                      <children>
                      
-                      <TilePane fx:id="mapviewer" alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
+                      <TilePane fx:id="mapviewer" alignment="CENTER" prefHeight="640.0" prefWidth="640.0" onDragOver="#handleDragOver" >
                            <children>
                                
                            </children>

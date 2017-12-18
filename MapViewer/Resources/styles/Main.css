@@ -11,3 +11,7 @@
 #enlargeBtn.pressed{
 	-fx-background-color: #00ff00;
 }
+
+#VAxeSource{
+	-fx-background-color: black;
+}

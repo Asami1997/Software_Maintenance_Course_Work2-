@@ -1,18 +1,16 @@
 package application.models;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import application.controllers.*;
-import javafx.event.EventHandler;
+
+import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.TilePane;
 
@@ -20,13 +18,11 @@ public class TileMap {
 
 	private int[][] map;
 	private String tileset;
+	private String Item;
 	private int numCols;
-	private int numRows;
-	private Image image;
-	public static ImageView view;
-	private int tileIndex;
-	public static ImageView axeImageView;
-	MainController mainController = new MainController();
+	private int numRows;	
+	static ImageView TempAxeView;
+	static int flag = 1;
 	
 	public int[][] getMap(){
 		return map;
@@ -80,59 +76,111 @@ public class TileMap {
 		
 	}
 	
-	//render map on tile pane
+public void loadItemSet(String s) {
+		
+		Item = s;
+		
+	}
+	
+	//render map on tilepane
 	public void render(TilePane pane, double scale) {
 		
 		if(tileset == null) return;
 		
-		pane.getChildren().clear();   
+		pane.getChildren().clear();
 		pane.setMinHeight(16*scale*numRows);
 		pane.setMinWidth(16*scale*numCols);
 		
-	    Image axeImage = new Image("/images/itemsq.jpeg" , 16*scale, 16*scale, true, true);
-
 		Image image = new Image(tileset, 320*scale, 32*scale, true, true);
+		Image AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
+		Image grass = new Image("/images/grass.png", 16*scale, 16*scale, true, true);
+		TempAxeView = new ImageView(image); 
+		
 		
 		for(int row=0; row<numRows; row++) {
 			for(int col=0; col<numCols; col++) {
 				int tile = map[row][col];
 				int tile_row = tile/20;
 				int tile_col = tile%20;
-			    int rowTilePane = tileIndex/40;
-                int colTilePane = tileIndex%40;
-                
-                //setting the axe intial position 
-                if(rowTilePane == 20 && colTilePane ==20){
-                	
-                	axeImageView = new ImageView(axeImage);
-                  	
-                	pane.getChildren().add(axeImageView);
-                	
-                	//getting index of view in the pane
-    				
-    		        tileIndex = pane.getChildren().indexOf(axeImageView);
-    		        
-    				mainController.dropAxeBoat(axeImageView ,tileIndex);
-                		
-			}else{
 				
-	        	    view = new ImageView(image);
-					//viewport helps to show part of tileset, as a tile
-		   		    view.setViewport(new Rectangle2D(tile_col*16*scale, tile_row*16*scale, 16*scale, 16*scale));
-		   		
-			    	view.setPreserveRatio(false);
+				ImageView view;
+				
+				if(row==20 && col==20) {
 					
-				    pane.getChildren().add(view);
-			
-				  //getting index of view in the pane
+					view = new ImageView(AxeImage);
+					//viewport helps to show part of tileset, as a tile
+					//view.setViewport(new Rectangle2D(20*16*scale, 20*16*scale, 16*scale, 16*scale));
+					view.setPreserveRatio(false);
+					
+					pane.getChildren().add(view);					
+				}
+				else {
+					view = new ImageView(image);
+					//viewport helps to show part of tileset, as a tile
+					view.setViewport(new Rectangle2D(tile_col*16*scale, tile_row*16*scale, 16*scale, 16*scale));
+					view.setPreserveRatio(false);
+					
+					pane.getChildren().add(view);					
+					
+				}
 				
-		           tileIndex = pane.getChildren().indexOf(view);
-		        
-				   mainController.dropAxeBoat(view ,tileIndex);			}
-                    			
+				view.setOnDragDetected(event -> {
+		            /* drag was detected, start drag-and-drop gesture */
+		            System.out.println("onDragDetected");
+		           
+		            if(view.getImage() == AxeImage) 
+		            {
+		            	System.out.println("View matches AxeImage");
+		            	/* allow any transfer mode */
+		            	Dragboard db = view.startDragAndDrop(TransferMode.MOVE);
+
+			            /* put a string on dragboard */
+			            ClipboardContent content = new ClipboardContent();
+			            content.putImage(view.getImage());
+			            db.setContent(content);	
+			            if(flag==1) {
+			            	view.setImage(TempAxeView.getImage());
+				            view.setViewport(new Rectangle2D(1*16*scale, 0*16*scale, 16*scale, 16*scale));
+				            flag =0;
+			            }
+			            else{
+			            	view.setImage(TempAxeView.getImage());
+				            view.setViewport(new Rectangle2D(tile_col*16*scale, tile_row*16*scale, 16*scale, 16*scale));
+			            }
+			            
+			            
+			            event.consume();
+		            }
+		            
+		        });	
+				
+				view.setOnDragDropped(event -> {
+					System.out.println("Dropped");
+		    		Dragboard db = event.getDragboard();
+		            boolean success = false;
+		            if (db.hasImage()) {
+		                System.out.println("Dropped: ");
+		                
+		                success = true;
+		            }
+		            
+		            
+		            TempAxeView.setImage(view.getImage());
+		            view.setImage(AxeImage);
+		            
+		            view.setViewport(new Rectangle2D(0,0, 16*scale, 16*scale));
+		            
+		            event.setDropCompleted(success);
+		            event.consume();
+		            
+		        });				
+				
 			}
+						
+		}	
 		
-	  }
-	
 	}
+		
 }
+	
+
