@@ -30,9 +30,12 @@ public class TileMap {
 	int colDragged;
 	int indexDragged;
 	Image AxeImage;
+	Image boatImage;
 	ImageView source;
+	boolean isBoat = false;
 	int tileBefore;
 	boolean fromBlocked = false;
+	ImageView view2;
 	MainController mainController = new MainController();
 	public int[][] getMap(){
 		return map;
@@ -103,6 +106,7 @@ public class TileMap {
 		
 		Image image = new Image(tileset, 320*scale, 32*scale, true, true);
 	    AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
+	    boatImage = new Image("/images/boat.gif", 16*scale, 16*scale, true, true);
 		Image grass = new Image("/images/grass.png", 16*scale, 16*scale, true, true);
 		TempAxeView = new ImageView(image); 
 		
@@ -134,10 +138,17 @@ public class TileMap {
 					view.setPreserveRatio(false);
 					
 					pane.getChildren().add(view);					
-					
-					//axe
 				}
 				
+				if(row == 13 && col == 20){
+					
+					view = new ImageView(boatImage);
+					//viewport helps to show part of tileset, as a tile
+					//view.setViewport(new Rectangle2D(20*16*scale, 20*16*scale, 16*scale, 16*scale));
+					view.setPreserveRatio(false);
+					pane.getChildren().add(view);
+						
+				}
 				GridPane.setConstraints(view, col, row);
 				
 				
@@ -164,8 +175,12 @@ public class TileMap {
             /* drag was detected, start drag-and-drop gesture */
             System.out.println("onDragDetected");
            
-            if(image2.getImage() == AxeImage) 
+            if(image2.getImage() == AxeImage || image2.getImage() == boatImage) 
             {
+            	if(image2.getImage() == boatImage){
+            		
+            		isBoat = true;
+            	}
             	System.out.println("View matches AxeImage");
             	/* allow any transfer mode */
             	Dragboard db = image2.startDragAndDrop(TransferMode.MOVE);
@@ -233,8 +248,17 @@ public class TileMap {
 			
 			pane.getChildren().remove(indexDragged);
 			
-			ImageView view2 = new ImageView(AxeImage);
+			if(isBoat == false){
+				
+				 view2 = new ImageView(AxeImage);
+				 
 			 
+			}else{
+				
+				 view2 = new ImageView(boatImage);
+				 isBoat = false;
+			}
+		
 			pane.add(view2, colDragged, rowDragged);
 			
 			
@@ -253,8 +277,16 @@ public class TileMap {
             }
             
             
-            TempAxeView.setImage(image2.getImage());
-            image2.setImage(AxeImage);
+            if(isBoat == false){
+            	TempAxeView.setImage(image2.getImage());
+               image2.setImage(AxeImage);
+            }else{
+            	
+            	TempAxeView.setImage(image2.getImage());
+                image2.setImage(boatImage);
+                isBoat = false;
+            }
+            
             
             image2.setViewport(new Rectangle2D(0,0, 16*scale, 16*scale));
             
