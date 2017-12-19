@@ -85,14 +85,18 @@ public class MainController {
 	    
 	    int tileCol = -1;          
 
+	    Image AxeImage;
+	    
 	    ImageView axeImageView;
     
-    private TileMap tilemap;
+       private TileMap tilemap;
     
-    private double scale = 1;
+       private double scale = 1;
     
     	public void initialize() {
     		
+    		 AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
+
     		tilemap = new TileMap();
     		tilemap.loadMap("/map.map");
     		tilemap.loadTileSet("/images/tileset.gif");
@@ -126,10 +130,17 @@ public class MainController {
     	
     	@FXML
     	private void handleDragOver(DragEvent event){
+    		
+    		//Check If Tile Is Blocked
+    
     		if(event.getDragboard().hasImage())
     		event.acceptTransferModes(TransferMode.ANY);
     	}
 
-        	
+
+      public void setAxeBack(int colDragged , int rowDragged){
+    	  
+    	  
+      }
     	
 }
