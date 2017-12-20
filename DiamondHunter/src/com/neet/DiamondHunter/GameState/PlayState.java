@@ -34,7 +34,14 @@ public class PlayState extends GameState {
 	
 	// items
 	private ArrayList<Item> items;
-	
+
+	/* In order to change the position of the items, set posDefault to true and populate the 0th and 1st indexes of
+	each integer array with your desired x y position accordingly. */
+	private int[] posBoat = new int[2]; // int array to set Boat position
+	private  int[] posAxe = new int[2]; // int array to set Axe position
+	private boolean posDefault = false; // Boolean to specify whether MapViewer has made changes to pos or not
+
+
 	// sparkles
 	private ArrayList<Sparkle> sparkles;
 	
@@ -76,7 +83,8 @@ public class PlayState extends GameState {
 		
 		// fill lists
 		populateDiamonds();
-		populateItems();
+        setPosAxe(posAxe); // setting both Axe position
+        setPosBoat(posBoat); // setting Boat position
 		
 		// initialize player
 		player.setTilePosition(17, 17);
@@ -169,22 +177,55 @@ public class PlayState extends GameState {
 		diamonds.add(d);
 		
 	}
-	
-	private void populateItems() {
-		
-		Item item;
-		
-		item = new Item(tileMap);
-		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
-		items.add(item);
-		
-		item = new Item(tileMap);
-		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
-		items.add(item);
-		
+
+	private int[] getPosAxe() {
+		return posAxe;
 	}
+
+	private int[] getPosBoat() {
+		return posBoat;
+	}
+
+	private void setPosAxe(int[] posAxe) {
+		this.posAxe = posAxe;
+		Item item;
+		if(posDefault == false){ /* If condition to ensure that a position is specified by default if the user of
+        the MapViewer application does not specify one */
+			item = new Item(tileMap);
+			item.setType(Item.AXE);
+			item.setTilePosition(26, 37);
+			items.add(item);
+			posAxe[0] = 26; posAxe[1] = 37;
+		}
+		else{
+			item = new Item(tileMap);
+			item.setType(Item.AXE);
+			item.setTilePosition(getPosAxe()[0], getPosAxe()[1]);
+			items.add(item);
+			posAxe[0]=getPosAxe()[0]; posBoat[1]=getPosAxe()[0];
+		}
+	}
+
+	private void setPosBoat(int[] posBoat) {
+		this.posBoat = posBoat;
+		Item item;
+		if(posDefault == false){
+			item = new Item(tileMap);
+			item.setType(Item.BOAT);
+			item.setTilePosition(12, 4);
+			items.add(item);
+			posBoat[0] = 12; posBoat[1] = 4;
+			System.out.println(getPosBoat()[0] + " " + getPosBoat()[1] + " XY of Boat");
+		}
+		else{
+			item = new Item(tileMap);
+			item.setType(Item.BOAT);
+			item.setTilePosition(getPosBoat()[0], getPosBoat()[1]);
+			items.add(item);
+			getPosBoat()[0]=getPosBoat()[0]; posBoat[1]=getPosBoat()[0];
+		}
+	}
+
 	
 	public void update() {
 		
