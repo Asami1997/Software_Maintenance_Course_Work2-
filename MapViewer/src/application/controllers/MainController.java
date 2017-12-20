@@ -42,12 +42,16 @@ import javafx.event.EventHandler;
 
 
 public class MainController {
+<<<<<<< HEAD
 	
 	
     	@FXML
 	    
     	public static AnchorPane anchor ;
      
+=======
+
+>>>>>>> ft-colrow
 	 @FXML
 	    private Button loadBtn;
 
@@ -100,7 +104,7 @@ public class MainController {
     
     	public void initialize() {
     		
-    		 AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
+    		AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
 
     		tilemap = new TileMap();
     		tilemap.loadMap("/map.map");
@@ -109,6 +113,23 @@ public class MainController {
     		tilemap.render(mapviewer, scale, redRectangle);
     		
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
+    		final Delta dragDelta = new Delta();
+    		mapscroll.setOnMouseEntered(e -> {
+    		    dragDelta.x = e.getScreenX();
+    		    dragDelta.y = e.getScreenY();
+    		});
+    		mapscroll.setOnMouseMoved(e -> {
+    			System.out.printf("Dragged V : %f\n", (e.getScreenX() - dragDelta.x));
+    		    mapscroll.setHvalue(mapscroll.getHvalue() + (e.getScreenX() - dragDelta.x)*0.003*(1/scale));
+    		    mapscroll.setVvalue(mapscroll.getVvalue() + (e.getScreenY() - dragDelta.y)*0.003*(1/scale));
+    		    dragDelta.x = e.getScreenX();
+    		    dragDelta.y = e.getScreenY();
+    		});
+    		/*mapscroll.setOnMouseReleased(e -> {
+    		    dragDelta.x = -1;
+    		    dragDelta.y = -1;
+    		    System.out.printf("Delta : %f %f\n", dragDelta.x, dragDelta.y);
+    		});*/
     		
     		enlargeBtn.setOnMouseClicked(e -> { this.zoomIn(e); });
     		shrinkBtn.setOnMouseClicked(e -> { this.zoomOut(e); });
@@ -117,7 +138,7 @@ public class MainController {
     		//redRectangle.setY(400);
     	
     	}
-    	
+    	class Delta { double x=-1, y=-1; } 
     	
     	public void zoomIn(Event e) {
     		if(scale>=5) return;

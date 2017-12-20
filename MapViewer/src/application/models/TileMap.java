@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import com.sun.glass.ui.Robot;
 
 import application.controllers.MainController;
+<<<<<<< HEAD
 import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
+=======
+>>>>>>> ft-colrow
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;

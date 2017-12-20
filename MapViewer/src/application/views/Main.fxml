@@ -1,33 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
+<<<<<<< HEAD
 <AnchorPane fx:id="anchor" prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+=======
+<AnchorPane fx:id="scene" prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+>>>>>>> ft-colrow
    <children>
       <VBox prefHeight="680.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ToolBar prefHeight="39.0" prefWidth="637.0">
+            <ToolBar id="toolbar" prefHeight="39.0" prefWidth="637.0" style="-fx-background-color: rgb(97,167,148);">
               <items>
-                <Button fx:id="loadBtn" mnemonicParsing="false" text="Load" />
-                  <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" />
-                  <Button fx:id="enlargeBtn" mnemonicParsing="false" text="Enlarge" />
-                  <Button fx:id="shrinkBtn" mnemonicParsing="false" text="Shrink" />
+                <Button fx:id="loadBtn" mnemonicParsing="false" styleClass="tool-btn" text="Load">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></Button>
+                  <Button fx:id="saveBtn" mnemonicParsing="false" styleClass="tool-btn" text="Save">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="enlargeBtn" mnemonicParsing="false" styleClass="tool-btn" text="Enlarge">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="shrinkBtn" mnemonicParsing="false" styleClass="tool-btn" text="Shrink">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Label fx:id="viewLbl" text="100%" />
-                  <Button fx:id="setBoatBtn" mnemonicParsing="false" text="Set Boat" />
-                  <Button fx:id="setAxeBtn" mnemonicParsing="false" text="Set Axe" />
-                  <Button fx:id="clearPosBtn" mnemonicParsing="false" text="Clear Position" />
+                  <Button fx:id="setBoatBtn" mnemonicParsing="false" styleClass="tool-btn" text="Set Boat">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="setAxeBtn" mnemonicParsing="false" styleClass="tool-btn" text="Set Axe">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="clearPosBtn" mnemonicParsing="false" styleClass="tool-btn" text="Clear Position">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
               </items>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </ToolBar>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
@@ -36,6 +67,7 @@
                      
                      <StackPane fx:id="stackPane" alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
                            <children>
+<<<<<<< HEAD
                               <GridPane fx:id="mapviewer" prefHeight="700" prefWidth="700" >
                                  <columnConstraints>
                                     <ColumnConstraints />
@@ -43,6 +75,11 @@
                                  <rowConstraints>
                                     <RowConstraints />
                                  </rowConstraints></GridPane>
+=======
+                              <GridPane fx:id="mapviewer" onDragOver="#handleDragOver" prefHeight="700" prefWidth="700">
+                                
+                              </GridPane>
+>>>>>>> ft-colrow
                            </children>
                        
                   </StackPane>
