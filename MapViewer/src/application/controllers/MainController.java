@@ -44,7 +44,10 @@ import javafx.event.EventHandler;
 public class MainController {
 	
 	
-    
+    	@FXML
+	    
+    	public static AnchorPane anchor ;
+     
 	 @FXML
 	    private Button loadBtn;
 
@@ -68,8 +71,7 @@ public class MainController {
 
 	    @FXML
 	    private ScrollPane mapscroll;
-	    
-	    
+	 
 	    @FXML
 	    private Label viewLbl;
 	    
@@ -78,6 +80,9 @@ public class MainController {
 	    
 	    @FXML
 	    private StackPane stackPane;
+	    
+	    @FXML
+	    public static Rectangle redRectangle;
 	    
 	    private Image axeImage;
 	  
@@ -101,12 +106,15 @@ public class MainController {
     		tilemap.loadMap("/map.map");
     		tilemap.loadTileSet("/images/tileset.gif");
     		
-    		tilemap.render(mapviewer, scale);
+    		tilemap.render(mapviewer, scale, redRectangle);
     		
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
     		
     		enlargeBtn.setOnMouseClicked(e -> { this.zoomIn(e); });
     		shrinkBtn.setOnMouseClicked(e -> { this.zoomOut(e); });
+    		
+    		//redRectangle.setX(400);
+    		//redRectangle.setY(400);
     	
     	}
     	
@@ -115,7 +123,7 @@ public class MainController {
     		if(scale>=5) return;
     		
     		scale = scale + 0.5;
-    		tilemap.render(mapviewer, scale);
+    		tilemap.render(mapviewer, scale, redRectangle);
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
     	}
     	
@@ -123,24 +131,19 @@ public class MainController {
     		if(scale<=1) return;
     		
     		scale = scale - 0.5;
-    		tilemap.render(mapviewer, scale);
+    		tilemap.render(mapviewer, scale, redRectangle);
     		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
     	}
     	
     	
-    	@FXML
-    	private void handleDragOver(DragEvent event){
+    	public void moveRectangle(int row , int col){    		
     		
-    		//Check If Tile Is Blocked
-    
-    		if(event.getDragboard().hasImage())
-    		event.acceptTransferModes(TransferMode.ANY);
+    		System.out.println("moving");
+    		redRectangle.setX(1000);
+    		redRectangle.setY(1000);
+    	
     	}
+    	
 
-
-      public void setAxeBack(int colDragged , int rowDragged){
-    	  
-    	  
-      }
     	
 }

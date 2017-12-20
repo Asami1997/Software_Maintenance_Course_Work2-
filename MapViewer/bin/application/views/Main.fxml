@@ -11,8 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+<AnchorPane fx:id="anchor" prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
    <children>
       <VBox prefHeight="680.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -35,19 +36,23 @@
                      
                      <StackPane fx:id="stackPane" alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
                            <children>
-                              <GridPane fx:id="mapviewer" prefHeight="700" prefWidth ="700" onDragOver = "#handleDragOver">
-                                
-                              </GridPane>
+                              <GridPane fx:id="mapviewer" prefHeight="700" prefWidth="700" >
+                                 <columnConstraints>
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                 </rowConstraints></GridPane>
                            </children>
                        
                   </StackPane>
-                        
-                           
+ 
                      </content>
                   </ScrollPane>
                </children>
             </HBox>
          </children>
       </VBox>
+      <Rectangle fx:id="redRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="16.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" x="200.0" y="200.0" AnchorPane.topAnchor="100.0" />
    </children>
 </AnchorPane>
