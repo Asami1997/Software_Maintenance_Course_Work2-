@@ -95,7 +95,7 @@ public class MainController {
     
     	public void initialize() {
     		
-    		 AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
+			AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
 
     		tilemap = new TileMap();
     		tilemap.loadMap("/map.map");
@@ -142,5 +142,6 @@ public class MainController {
     	  
     	  
       }
-    	
+
+
 }

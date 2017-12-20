@@ -34,6 +34,9 @@ public class TileMap {
 	ImageView source;
 	boolean isBoat = false;
 	int tileBefore;
+
+	static int AxeDesRow, AxeDesCol, BoatDesRow, BoatDesCol;
+
 	boolean fromBlocked = false;
 	ImageView view2;
 	MainController mainController = new MainController();
@@ -260,8 +263,7 @@ public class TileMap {
 			}
 		
 			pane.add(view2, colDragged, rowDragged);
-			
-			
+
         	System.out.println(GridPane.getColumnIndex(image2));
         	
 			dragDetection(view2,tile_row,tile_col,scale,pane,true,tile);
@@ -279,20 +281,28 @@ public class TileMap {
             
             if(isBoat == false){
             	TempAxeView.setImage(image2.getImage());
-               image2.setImage(AxeImage);
+                image2.setImage(AxeImage);
+
+				AxeDesRow =  GridPane.getRowIndex(image2);
+				AxeDesCol = GridPane.getColumnIndex(image2);
+
+				System.out.println("Row and Column of Axe: " + AxeDesRow + " " + AxeDesCol);
             }else{
-            	
             	TempAxeView.setImage(image2.getImage());
                 image2.setImage(boatImage);
                 isBoat = false;
+
+				BoatDesRow = GridPane.getRowIndex(image2);
+				BoatDesCol = GridPane.getColumnIndex(image2);
+
+				System.out.println("Row and Column of Boat: " + BoatDesRow + " " + BoatDesCol);
             }
-            
-            
+
             image2.setViewport(new Rectangle2D(0,0, 16*scale, 16*scale));
             
             event.setDropCompleted(success);
             event.consume();
-            	
+
     		System.out.println(tile);
     		
 			}
