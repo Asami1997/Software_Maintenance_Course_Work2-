@@ -23,6 +23,13 @@ public class TileMap extends Observable{
 
 	private int[][] map;
 	private String tileset;
+	private String diamond;
+	private int[][] dpos = {
+		{20,20},
+		{12,36},
+		{28,4},
+		{4,34}
+	};
 	private int numCols = -1;
 	private int numRows = -1;
 	
@@ -91,6 +98,10 @@ public class TileMap extends Observable{
 		tileset = s;
 	}
 	
+	public void loadDiamond(String s) {
+		diamond = s;
+	}
+	
 	public boolean isBlocked(int col, int row) {
 		int tile = map[row][col];
 		return ((tile==20) || (tile==21) || (tile==22));
@@ -141,6 +152,16 @@ public class TileMap extends Observable{
 				stack.setOnDragExited(e -> { this.removeHint(grid, stack); });
 				stack.setOnDragDropped(e -> { this.dropItem(e, grid, stack); });
 			}
+		}
+		
+		//render diamonds
+		Image dimage = new Image(diamond, 64*scale, 16*scale, true, true);
+		
+		for(int i=0; i<dpos.length; i++) {
+			StackPane stack = (StackPane) grid.getChildren().get(numRows*dpos[i][0]+dpos[i][1]);
+			ImageView view = new ImageView(dimage);
+			view.setViewport(new Rectangle2D(0,0, 16*scale, 16*scale));
+			stack.getChildren().add(view);
 		}
 
 	}

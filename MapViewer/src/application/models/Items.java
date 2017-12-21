@@ -7,7 +7,7 @@ public class Items {
 	
 	private Item[] items = {
 		new Item("axe", 20, 20, new ImageView()),
-		new Item("boat", 20, 13, new ImageView())
+		new Item("boat", 20, 13, new ImageView()),
 	};
 	
 	private Item axe = items[0];

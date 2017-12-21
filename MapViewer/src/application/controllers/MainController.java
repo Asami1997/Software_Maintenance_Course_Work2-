@@ -72,6 +72,7 @@ public class MainController {
 		tilemap = new TileMap();
 		tilemap.loadMap("/map.map");
 		tilemap.loadTileSet("/images/tileset.gif");
+		tilemap.loadDiamond("/images/diamond.gif");
 		tilemap.render(mapviewer, items, scale);
 		
 		//listen to active tile
