@@ -6,9 +6,11 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.Observable;
 
+import application.controllers.MainController;
 import javafx.event.Event;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -20,7 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
 public class TileMap extends Observable{
-
+	
 	private int[][] map;
 	private String tileset;
 	private String diamond = "images/diamond.gif";
@@ -36,6 +38,8 @@ public class TileMap extends Observable{
 	private int active_col = -1;
 	private int active_row = -1;
 	private String active_type = null;
+	
+	MainController mainController = new MainController();
 	
 	Item dragging;
 	
@@ -177,6 +181,7 @@ public class TileMap extends Observable{
 		
 		case 1: 
 			active_type = "Grass";
+			
 		    break;
 		case 2 : 
 			active_type = "Bush";
@@ -192,8 +197,10 @@ public class TileMap extends Observable{
 			break;
 		default:
 			active_type = " Green Tree";
+			
+			
 		}
-		
+
 		//notify active tile changed
 		setChanged();
 		notifyObservers();
@@ -277,4 +284,7 @@ public class TileMap extends Observable{
 		e.setDropCompleted(success);
 		e.consume();
 	}
+	
+	//store tileType text area in main controller temporarily 
+
 }
