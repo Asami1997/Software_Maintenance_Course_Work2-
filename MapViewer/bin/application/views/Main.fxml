@@ -77,12 +77,12 @@
                                     <Image url="@../../../Resources/images/player1.gif" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id = "player2" fitHeight="88.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                              <ImageView fx:id="player2" fitHeight="88.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                                  <image>
                                     <Image url="@../../../Resources/images/player2.gif" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id = "player3" fitHeight="83.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                              <ImageView fx:id="player3" fitHeight="83.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                                  <image>
                                     <Image url="@../../../Resources/images/player3.gif" />
                                  </image>
