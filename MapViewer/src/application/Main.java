@@ -10,7 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-						
+			
 			Pane root = FXMLLoader.load(getClass().getResource("views/Main.fxml"));
 			
 			Scene scene = new Scene(root);
@@ -24,7 +24,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-		
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
