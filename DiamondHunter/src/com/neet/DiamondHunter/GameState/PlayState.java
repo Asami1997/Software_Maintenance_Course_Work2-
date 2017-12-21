@@ -193,6 +193,7 @@ public class PlayState extends GameState {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		System.out.println(jsonElement.toString());
 	}
 
 	private int[] getPosAxe() {

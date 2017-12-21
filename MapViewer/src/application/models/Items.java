@@ -39,25 +39,27 @@ public class Items {
 		return boat_pos;
 	}
 	
-	//accept json file location and parse the file
+	//accept json file location and save it in the correct format
 	public void load(String s) {
 		
 	}
 	
 	//save position in json file format
 	public void save() throws IOException {
+    	// Created JSON Array for axe position
 		JsonArray jsonArrayAxe = new JsonArray();
 		jsonArrayAxe.add(this.getAxePos()[0]);
 		jsonArrayAxe.add(this.getAxePos()[1]);
-		
+		// Created JSON Array for the boat position
 		JsonArray jsonArrayBoat = new JsonArray();
 		jsonArrayBoat.add(this.getBoatPos()[0]);
 		jsonArrayBoat.add(this.getBoatPos()[1]);
-
+		// Added both JSON Arrays to a JSON Object
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.add("Axe Position", jsonArrayAxe);
 		jsonObject.add("Boat Position", jsonArrayBoat);
 
+		// Saved JSON object into a file after converting it to a string
 		Writer writer = new FileWriter("C:\\Users\\User\\Documents\\GitHub\\Software_Maintenance_Course_Work2-\\file.json");
 		writer.write(String.valueOf(jsonObject));
 		writer.close();

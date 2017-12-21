@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35bff042-4717-460b-ab47-6d01c9b7e177" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/GameState.class" afterPath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/GameState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/IntroState.class" afterPath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/IntroState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/PauseState.class" afterPath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/PauseState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/PlayState.class" afterPath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/GameState/PlayState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/Manager/GameStateManager.class" afterPath="$PROJECT_DIR$/DiamondHunter/bin/com/neet/DiamondHunter/Manager/GameStateManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/bin/application/controllers/MainController.class" afterPath="$PROJECT_DIR$/MapViewer/bin/application/controllers/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/bin/application/models/Items.class" afterPath="$PROJECT_DIR$/MapViewer/bin/application/models/Items.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/bin/application/models/TileMap.class" afterPath="$PROJECT_DIR$/MapViewer/bin/application/models/TileMap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/GameState.java" afterPath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/GameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/IntroState.java" afterPath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/IntroState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PauseState.java" afterPath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PauseState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PlayState.java" afterPath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PlayState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/Manager/GameStateManager.java" afterPath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/Manager/GameStateManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/bin/application/views/Main.fxml" afterPath="$PROJECT_DIR$/MapViewer/bin/application/views/Main.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/src/application/controllers/MainController.java" afterPath="$PROJECT_DIR$/MapViewer/src/application/controllers/MainController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/src/application/models/Items.java" afterPath="$PROJECT_DIR$/MapViewer/src/application/models/Items.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/src/application/models/TileMap.java" afterPath="$PROJECT_DIR$/MapViewer/src/application/models/TileMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MapViewer/src/application/views/Main.fxml" afterPath="$PROJECT_DIR$/MapViewer/src/application/views/Main.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/DiamondHunter/bin/" />
     <ignored path="$PROJECT_DIR$/MapViewer/bin/" />
@@ -33,14 +17,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PlayState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="194" column="9" lean-forward="false" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="196" column="5" lean-forward="true" selection-start-line="196" selection-start-column="5" selection-end-line="196" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MapViewer/src/application/controllers/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="150" column="23" lean-forward="true" selection-start-line="150" selection-start-column="23" selection-end-line="150" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,6 +45,18 @@
             <state relative-caret-position="102">
               <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="28" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Items.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MapViewer/src/application/models/Items.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="61" column="72" lean-forward="false" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,6 +72,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -95,11 +108,11 @@
         <option value="$PROJECT_DIR$/MapViewer/src/application/models/TileMap.java" />
         <option value="$PROJECT_DIR$/MapViewer/src/application/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/MapViewer/src/application/views/Main.fxml" />
-        <option value="$PROJECT_DIR$/MapViewer/src/application/models/Items.java" />
         <option value="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PauseState.java" />
         <option value="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/IntroState.java" />
         <option value="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/Manager/GameStateManager.java" />
         <option value="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PlayState.java" />
+        <option value="$PROJECT_DIR$/MapViewer/src/application/models/Items.java" />
       </list>
     </option>
   </component>
@@ -148,6 +161,42 @@
               <item name="DiamondHunter" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DiamondHunter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Software_Maintenance_Course_Work2-" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DiamondHunter" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DiamondHunter" type="462c0819:PsiDirectoryNode" />
+              <item name="GameState" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Software_Maintenance_Course_Work2-" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MapViewer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Software_Maintenance_Course_Work2-" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MapViewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Software_Maintenance_Course_Work2-" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MapViewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Software_Maintenance_Course_Work2-" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MapViewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Software_Maintenance_Course_Work2-" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MapViewer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Software_Maintenance_Course_Work2-" type="b2602c69:ProjectViewProjectNode" />
@@ -333,7 +382,7 @@
       <workItem from="1513767121335" duration="868000" />
       <workItem from="1513768003488" duration="2006000" />
       <workItem from="1513775252857" duration="16000" />
-      <workItem from="1513832534100" duration="19480000" />
+      <workItem from="1513832534100" duration="21135000" />
     </task>
     <task id="LOCAL-00001" summary="Added changes that I had previously implemented in my fork of the&#10;project. This includes splitting the &quot;populateItems&quot; method and adding&#10;setters and getters for item positions where appropiate to later ease&#10;the use of JSON files.">
       <created>1513756624793</created>
@@ -346,7 +395,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31529000" />
+    <option name="totallyTimeSpent" value="33184000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -597,16 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MapViewer/src/application/models/Items.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="61" column="47" lean-forward="false" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MapViewer/src/application/views/Main.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -622,14 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4126">
           <caret line="42" column="45" lean-forward="false" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MapViewer/src/application/controllers/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="147" column="58" lean-forward="false" selection-start-line="147" selection-start-column="58" selection-end-line="147" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -723,10 +754,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/positionsForJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/GameState/PlayState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="194" column="9" lean-forward="false" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
+        <state relative-caret-position="272">
+          <caret line="196" column="5" lean-forward="true" selection-start-line="196" selection-start-column="5" selection-end-line="196" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MapViewer/src/application/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="150" column="23" lean-forward="true" selection-start-line="150" selection-start-column="23" selection-end-line="150" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MapViewer/src/application/models/Items.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="61" column="72" lean-forward="false" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
