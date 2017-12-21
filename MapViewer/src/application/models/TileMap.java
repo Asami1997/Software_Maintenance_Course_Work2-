@@ -23,7 +23,7 @@ public class TileMap extends Observable{
 
 	private int[][] map;
 	private String tileset;
-	private String diamond;
+	private String diamond = "images/diamond.gif";
 	private int[][] dpos = {
 		{20,20},
 		{12,36},
