@@ -45,7 +45,7 @@
                                     <Image url="@../../../Resources/images/coordinates.png" />
                                  </image>
                               </ImageView>
-                              <TextArea fx:id="tileCoordinate" prefHeight="113.0" prefWidth="215.0" text="&#10;&#10;">
+                              <TextArea fx:id="tileCoordinate" editable="false" prefHeight="113.0" prefWidth="215.0" text="&#10;&#10;">
                                  <font>
                                     <Font name="Curlz MT" size="24.0" />
                                  </font></TextArea>
