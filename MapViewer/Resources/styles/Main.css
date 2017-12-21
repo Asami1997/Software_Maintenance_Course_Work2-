@@ -20,11 +20,13 @@
 	-fx-effect: none;
 }
 
-#enlargeBtn.pressed{
-	-fx-background-color: #00ff00;
+.grid{
+	-fx-background-color: #ccc;
+    -fx-vgap: 1;
+    -fx-hgap: 1;
+    -fx-padding: 1;
 }
 
-#VAxeSource{
-	-fx-background-color: black;
+.item{
+	-fx-cursor: hand;
 }
-
