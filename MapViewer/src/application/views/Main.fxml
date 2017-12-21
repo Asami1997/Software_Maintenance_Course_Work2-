@@ -1,95 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<AnchorPane fx:id="anchor" prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
-=======
-<AnchorPane fx:id="scene" prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
->>>>>>> ft-colrow
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
    <children>
-      <VBox prefHeight="680.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="700.0" prefWidth="900.0" style="-fx-background-image: url(&quot;images/background.jpg&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: cover, auto;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ToolBar id="toolbar" prefHeight="39.0" prefWidth="637.0" style="-fx-background-color: rgb(97,167,148);">
-              <items>
-                <Button fx:id="loadBtn" mnemonicParsing="false" styleClass="tool-btn" text="Load">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets></Button>
-                  <Button fx:id="saveBtn" mnemonicParsing="false" styleClass="tool-btn" text="Save">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="enlargeBtn" mnemonicParsing="false" styleClass="tool-btn" text="Enlarge">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="shrinkBtn" mnemonicParsing="false" styleClass="tool-btn" text="Shrink">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Label fx:id="viewLbl" text="100%" />
-                  <Button fx:id="setBoatBtn" mnemonicParsing="false" styleClass="tool-btn" text="Set Boat">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="setAxeBtn" mnemonicParsing="false" styleClass="tool-btn" text="Set Axe">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="clearPosBtn" mnemonicParsing="false" styleClass="tool-btn" text="Clear Position">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-              </items>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </ToolBar>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <StackPane minWidth="213.0" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ScrollPane fx:id="mapscroll" maxHeight="640.0" maxWidth="701.0" prefHeight="516.0" prefWidth="701.0" HBox.hgrow="ALWAYS">
-                     <content>
-                     
-                     <StackPane fx:id="stackPane" alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
-                           <children>
-<<<<<<< HEAD
-                              <GridPane fx:id="mapviewer" prefHeight="700" prefWidth="700" >
-                                 <columnConstraints>
-                                    <ColumnConstraints />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints />
-                                 </rowConstraints></GridPane>
-=======
-                              <GridPane fx:id="mapviewer" onDragOver="#handleDragOver" prefHeight="700" prefWidth="700">
-                                
-                              </GridPane>
->>>>>>> ft-colrow
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                  <VBox prefHeight="700.0" prefWidth="269.0" style="-fx-background-radius: 10; -fx-background-color: rgba(0, 100, 100, 0.5);">
+                     <children>
+                        <Label prefHeight="44.0" prefWidth="100.0" style="-fx-border-color: rgba(0, 100, 100, 1); -fx-background-radius: 200;" text="Skins">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Georgia Bold" size="31.0" />
+                           </font></Label>
+                        <GridPane hgap="5.0" prefHeight="88.0" prefWidth="107.0" vgap="5.0">
+      
+                                 <children>
+                              <Button ellipsisString="1" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="Button" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <Button ellipsisString="2" mnemonicParsing="false" prefHeight="26.0" prefWidth="28.0" style="-fx-background-radius: 200;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button ellipsisString="3" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 200;" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
-                       
-                  </StackPane>
- 
+                           <columnConstraints>
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                           </rowConstraints>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+      
+                              </GridPane>
+                        <Label prefHeight="38.0" prefWidth="178.0" style="-fx-border-radius: 200; -fx-border-color: rgba(0, 100, 100, 1);" text="Diamonds">
+                           <VBox.margin>
+                              <Insets top="60.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Georgia Bold" size="31.0" />
+                           </font></Label>
+                         <GridPane hgap="5.0" prefHeight="85.0" prefWidth="182.0" vgap="5.0">
+      
+                                   <children>
+                                 <Button mnemonicParsing="false" prefHeight="79.0" prefWidth="31.0" text="Button" GridPane.rowIndex="3" />
+                                 <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="31.0" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                 <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="31.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin></Button>
+                             </children>
+                           <columnConstraints>
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                              <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                              <RowConstraints />
+                              <RowConstraints />
+                           </rowConstraints>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+      
+                               </GridPane>
+                        <Button mnemonicParsing="false" prefHeight="160.0" prefWidth="184.0" style="-fx-padding: 8 15 15 15; -fx-background-insets: 0 0 0 5 0, 0 0 6 0,0 0 7 0; -fx-background-radius: 8; -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold;" text="Play!">
+                           <VBox.margin>
+                              <Insets top="180.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Georgia Bold" size="41.0" />
+                           </font></Button>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <VBox alignment="CENTER" prefHeight="649.0" prefWidth="779.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="178.0" prefWidth="687.0" style="-fx-background-color: rgba(0, 100, 100, 0.5); -fx-background-radius: 10;">
+                     <children>
+                        <StackPane prefHeight="165.0" prefWidth="423.0">
+                           <children>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <image>
+                                          <Image url="@../../../../../../Desktop/151376299238745.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                                       <image>
+                                          <Image url="@../../../../../../Desktop/boat.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </StackPane>
+                        <GridPane alignment="TOP_RIGHT" prefHeight="176.0" prefWidth="302.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="26.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="16.0" prefWidth="276.0" text="          Zoom" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Georgia Bold" size="30.0" />
+                                 </font></Label>
+                              <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="156.0" style="-fx-background-radius: 200;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="158.0" style="-fx-background-radius: 200;" text="+" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </HBox>
+                  <ScrollPane fx:id="mapscroll" maxHeight="640.0" maxWidth="958.0" prefHeight="525.0" prefWidth="958.0" HBox.hgrow="ALWAYS">
+                     <content>
+                        <TilePane fx:id="mapviewer" alignment="CENTER" prefHeight="553.0" prefWidth="799.0" />
                      </content>
                   </ScrollPane>
                </children>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
-      <Rectangle fx:id="redRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="16.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" x="200.0" y="200.0" AnchorPane.topAnchor="100.0" />
+      </HBox>
    </children>
 </AnchorPane>
