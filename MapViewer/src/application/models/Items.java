@@ -1,23 +1,18 @@
 package application.models;
 
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 
 public class Items {
-
-	private int[] axe_pos;
-	private int[] boat_pos;
-
-	public int[] getAxePos() {
-		return axe_pos;
-	}
-
-	public int[] getBoatPos() {
-		return boat_pos;
-	}
+	
+	private Item[] items = {
+		new Item("axe", 20, 20, new ImageView()),
+		new Item("boat", 20, 13, new ImageView())
+	};
+	
+	private Item axe = items[0];
+		
+	private Item boat = items[1];
 
 	// accept json file location and parse the file
 	public void load(String s) {
@@ -29,29 +24,30 @@ public class Items {
 
 	}
 	
-	public void render(AnchorPane itemviewer, double scale) {
-		itemviewer.getChildren().clear();
-		
-		Image items = new Image("images/items.gif", 48*scale, 32*scale, true, true);
-		
-		//Axe
-		ImageView Axe = new ImageView(items);
-		Axe.setViewport(new Rectangle2D(16*scale, 16*scale, 16*scale, 16*scale));
-		this.put(Axe, 20, 20, scale);
-		Axe.getStyleClass().add("item");
-		itemviewer.getChildren().addAll(Axe);
-		
-		//Boat
-		ImageView Boat = new ImageView(items);
-		Boat.setViewport(new Rectangle2D(0*scale, 16*scale, 16*scale, 16*scale));
-		this.put(Boat, 20, 13, scale);
-		Boat.getStyleClass().add("item");
-		itemviewer.getChildren().addAll(Boat);
+	public void init(double scale) {		
+		//load items images
+		axe.getView().setImage(new Image("images/axe.gif", 16*scale, 16*scale, true, true));
+		boat.getView().setImage(new Image("images/boat.gif", 16*scale, 16*scale, true, true));
+
+		//put items on map
+		for(int i=0; i<items.length; i++) 
+			items[i].getView().getStyleClass().add("item");
 	}
 	
-	private void put(Node node, int x, int y, double scale) {
-		AnchorPane.setLeftAnchor(node, x*16*scale+1+x);
-		AnchorPane.setTopAnchor(node, y*16*scale+1+y);
+	public Item find(String name) {
+		for(int i=0; i<this.items.length; i++) {
+			if(this.items[i].getName() == name)
+				return this.items[i];
+		}
+		return null;
+	}
+	
+	public Item get(int col, int row) {
+		for(int i=0; i<this.items.length; i++) {
+			if(this.items[i].getCol() == col && this.items[i].getRow() == row)
+				return this.items[i];
+		}
+		return null;
 	}
 
 }

@@ -21,10 +21,18 @@
 }
 
 .grid{
-	-fx-background-color: #ccc;
+	-fx-background-color: #bbb;
     -fx-vgap: 1;
     -fx-hgap: 1;
     -fx-padding: 1;
+}
+
+.hint-allow{
+	-fx-fill: rgba(46, 204, 113, 0.7);
+}
+
+.hint-block{
+	-fx-fill: rgba(231, 76, 60, 0.7);
 }
 
 .item{

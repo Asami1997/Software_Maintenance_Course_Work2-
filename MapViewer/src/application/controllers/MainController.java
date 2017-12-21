@@ -1,5 +1,8 @@
 package application.controllers;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import application.models.Items;
 import application.models.TileMap;
 import javafx.event.Event;
@@ -8,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -53,40 +55,46 @@ public class MainController {
 
 	@FXML
 	private StackPane stackPane;
-
-	@FXML
-	public Rectangle redRectangle;
-
-	int[] focusPos = {-1, -1};
 	
 	private TileMap tilemap;
 	private Items items;
 
+	int[] focusPos = {-1, -1};
 	private double scale = 1;
 
 	public void initialize() {
 
+		//load items resources
+		items = new Items();
+		items.init(scale);
+		
 		//load resources and render Tilemap
 		tilemap = new TileMap();
 		tilemap.loadMap("/map.map");
 		tilemap.loadTileSet("/images/tileset.gif");
-		tilemap.render(mapviewer, scale);
+		tilemap.render(mapviewer, items, scale);
 		
-		//load resources and render Items
-		items = new Items();
-		items.render(itemviewer, scale);
+		//listen to active tile
+		tilemap.addObserver(new ActiveTileObserver());
 		
 		//scroll pane align center of parent
 		mapscroll.setMaxSize(mapviewer.getMinWidth() + 3, mapviewer.getMinHeight() + 3);
 
 		//focus scroll pane to cursor location
 		mapscroll.setOnMouseEntered(e -> { this.focusPos(e); });
-		mapscroll.setOnMouseMoved(e -> { this.focusPos(e);});
+		mapscroll.setOnMouseMoved(e -> { this.focusPos(e); });
 
 		//enlarge and shrink viewport
 		enlargeBtn.setOnMouseClicked(e -> { this.zoomIn(e); });
 		shrinkBtn.setOnMouseClicked(e -> { this.zoomOut(e); });
 	
+	}
+	
+	public class ActiveTileObserver implements Observer{
+		@Override
+		public void update(Observable o, Object arg) {
+			System.out.println("Active: " + ((TileMap) o).getActiveCol() + " " + ((TileMap) o).getActiveRow() + " " + ((TileMap) o).getActiveType());
+		}
 	}
 
 	public void zoomIn(Event e) {
@@ -94,8 +102,8 @@ public class MainController {
 			return;
 
 		scale = scale + 0.5;
-		tilemap.render(mapviewer, scale);
-		items.render(itemviewer, scale);
+		items.init(scale);
+		tilemap.render(mapviewer, items, scale);
 		mapscroll.setMaxSize(mapviewer.getMinWidth() + 3, mapviewer.getMinHeight() + 3);
 	}
 
@@ -104,8 +112,8 @@ public class MainController {
 			return;
 
 		scale = scale - 0.5;
-		tilemap.render(mapviewer, scale);
-		items.render(itemviewer, scale);
+		items.init(scale);
+		tilemap.render(mapviewer, items, scale);
 		mapscroll.setMaxSize(mapviewer.getMinWidth() + 3, mapviewer.getMinHeight() + 3);
 	}
 	
@@ -120,7 +128,5 @@ public class MainController {
 		focusPos[0] = (int) e.getScreenX();
 		focusPos[1] = (int) e.getScreenY();
 	}
-	
-	
 
 }

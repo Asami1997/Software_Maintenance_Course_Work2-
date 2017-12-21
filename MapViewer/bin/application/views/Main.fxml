@@ -73,28 +73,10 @@
 				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
 					VBox.vgrow="ALWAYS">
 					<children>
-						<ScrollPane fx:id="mapscroll" maxHeight="640.0"
-							maxWidth="701.0" prefHeight="516.0" prefWidth="701.0" HBox.hgrow="ALWAYS">
+						<ScrollPane fx:id="mapscroll" HBox.hgrow="ALWAYS">
 							<content>
-
-								<StackPane fx:id="stackPane" alignment="CENTER"
-									prefHeight="640.0" prefWidth="640.0">
-									<children>
-										<GridPane fx:id="mapviewer" styleClass="grid"
-											prefHeight="700" prefWidth="700">
-										</GridPane>
-										<AnchorPane fx:id="itemviewer" prefHeight="200.0"
-											prefWidth="200.0">
-											<children>
-												<Rectangle fx:id="redRectangle" arcHeight="5.0"
-													arcWidth="5.0" fill="#ff1f1f" height="16.0" opacity="0.5"
-													stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0"
-													AnchorPane.topAnchor="100.0" />
-											</children>
-										</AnchorPane>
-									</children>
-								</StackPane>
-
+								<GridPane fx:id="mapviewer" styleClass="grid">
+								</GridPane>
 							</content>
 						</ScrollPane>
 					</children>
