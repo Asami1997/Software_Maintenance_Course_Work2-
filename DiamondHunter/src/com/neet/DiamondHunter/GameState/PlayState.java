@@ -7,8 +7,11 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 
+import com.google.gson.stream.JsonReader;
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
 import com.neet.DiamondHunter.Entity.Player;
@@ -20,6 +23,8 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.TileMap.TileMap;
+
+import com.google.gson.*;
 
 public class PlayState extends GameState {
 	
@@ -83,6 +88,7 @@ public class PlayState extends GameState {
 		
 		// fill lists
 		populateDiamonds();
+		jsonReader();
         setPosAxe(posAxe); // setting both Axe position
         setPosBoat(posBoat); // setting Boat position
 		
@@ -176,6 +182,17 @@ public class PlayState extends GameState {
 		d.setTilePosition(13, 20);
 		diamonds.add(d);
 		
+	}
+
+	private void jsonReader() {
+		Gson gson = new Gson();
+
+		JsonElement jsonElement = null;
+		try {
+			jsonElement = gson.fromJson(new FileReader("C:\\Users\\User\\Documents\\GitHub\\Software_Maintenance_Course_Work2-\\file.json"), JsonElement.class);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private int[] getPosAxe() {

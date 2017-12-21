@@ -1,6 +1,7 @@
 package application.models;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -40,6 +41,10 @@ public class TileMap {
 	boolean fromBlocked = false;
 	ImageView view2;
 	MainController mainController = new MainController();
+
+	public TileMap() throws IOException {
+	}
+
 	public int[][] getMap(){
 		return map;
 	}

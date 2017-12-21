@@ -5,13 +5,14 @@ import java.io.IOException;
 import java.io.Writer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonWriter;
 
 public class Items {
 
 	TileMap tileMap = new TileMap();
 	Gson gson = new Gson();
-	GsonBuilder gsonBuilder = new GsonBuilder();
-	Writer writer = new FileWriter("OutputGSON.json");
 
 	private int[] axe_pos;
 	private int[] boat_pos;
@@ -45,10 +46,23 @@ public class Items {
 	
 	//save position in json file format
 	public void save() throws IOException {
-    	gsonBuilder.create();
-    	gson.toJson(getAxePos(), writer);
-    	gson.toJson(getBoatPos(), writer);
-    	writer.close();
+		JsonArray jsonArrayAxe = new JsonArray();
+		jsonArrayAxe.add(this.getAxePos()[0]);
+		jsonArrayAxe.add(this.getAxePos()[1]);
+		
+		JsonArray jsonArrayBoat = new JsonArray();
+		jsonArrayBoat.add(this.getBoatPos()[0]);
+		jsonArrayBoat.add(this.getBoatPos()[1]);
+
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.add("Axe Position", jsonArrayAxe);
+		jsonObject.add("Boat Position", jsonArrayBoat);
+
+		Writer writer = new FileWriter("C:\\Users\\User\\Documents\\GitHub\\Software_Maintenance_Course_Work2-\\file.json");
+		writer.write(String.valueOf(jsonObject));
+		writer.close();
+
+		System.out.println("Saved JSON");
 	}
 	
 }

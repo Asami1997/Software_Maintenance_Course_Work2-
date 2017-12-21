@@ -5,21 +5,19 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+<AnchorPane prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
    <children>
       <VBox prefHeight="680.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ToolBar prefHeight="39.0" prefWidth="637.0">
               <items>
                 <Button fx:id="loadBtn" mnemonicParsing="false" text="Load" />
-                  <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" />
+                  <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveAction" text="Save" />
                   <Button fx:id="enlargeBtn" mnemonicParsing="false" text="Enlarge" />
                   <Button fx:id="shrinkBtn" mnemonicParsing="false" text="Shrink" />
                   <Label fx:id="viewLbl" text="100%" />
@@ -35,7 +33,7 @@
                      
                      <StackPane fx:id="stackPane" alignment="CENTER" prefHeight="640.0" prefWidth="640.0">
                            <children>
-                              <GridPane fx:id="mapviewer" prefHeight="700" prefWidth ="700" onDragOver = "#handleDragOver">
+                              <GridPane fx:id="mapviewer" onDragOver="#handleDragOver" prefHeight="700" prefWidth="700">
                                 
                               </GridPane>
                            </children>

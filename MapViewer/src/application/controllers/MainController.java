@@ -4,9 +4,11 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 
+import application.models.Items;
 import application.models.TileMap;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -42,8 +44,6 @@ import javafx.event.EventHandler;
 
 
 public class MainController {
-	
-	
     
 	 @FXML
 	    private Button loadBtn;
@@ -92,8 +92,11 @@ public class MainController {
        private TileMap tilemap;
     
        private double scale = 1;
-    
-    	public void initialize() {
+
+    public MainController() throws IOException {
+    }
+
+    public void initialize() throws IOException {
     		
 			AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
 
@@ -141,6 +144,11 @@ public class MainController {
       public void setAxeBack(int colDragged , int rowDragged){
     	  
     	  
+      }
+      // Calls method save when the save button is pressed
+      public void saveAction() throws IOException {
+          Items items = new Items();
+          items.save();
       }
 
 
