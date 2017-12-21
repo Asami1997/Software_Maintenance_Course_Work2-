@@ -26,7 +26,7 @@ public class Items {
 	
 	public void init(double scale) {		
 		//load items images
-		axe.getView().setImage(new Image("images/axe.png", 16*scale, 16*scale, true, true));
+		axe.getView().setImage(new Image("images/axe.gif", 16*scale, 16*scale, true, true));
 		boat.getView().setImage(new Image("images/boat.gif", 16*scale, 16*scale, true, true));
 
 		//put items on map

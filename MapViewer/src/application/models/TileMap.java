@@ -172,8 +172,26 @@ public class TileMap extends Observable{
 		active_row = index/40;
 		
 		switch(map[active_row][active_col]) {
-			default:
-				active_type = "Tree";
+		
+	    //1 grass , 2 bush , 3 flower , 20 : green tree, 21 daed tree , 22 water
+		
+		case 1: 
+			active_type = "Grass";
+		    break;
+		case 2 : 
+			active_type = "Bush";
+			break;
+		case 3 :
+			active_type = "Flower";
+			break;
+		case 21 :
+			active_type = "Dead Tree";
+			break;
+		case 22: 
+			active_type ="water";
+			break;
+		default:
+			active_type = " Green Tree";
 		}
 		
 		//notify active tile changed
