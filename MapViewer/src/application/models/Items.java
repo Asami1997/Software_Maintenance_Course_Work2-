@@ -4,10 +4,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonWriter;
 
 public class Items {
 
@@ -54,7 +52,7 @@ public class Items {
 		JsonArray jsonArrayBoat = new JsonArray();
 		jsonArrayBoat.add(this.getBoatPos()[0]);
 		jsonArrayBoat.add(this.getBoatPos()[1]);
-		// Added both JSON Arrays to a JSON Object
+		// Added both JSON Arrays to a JSON Object after naming them
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.add("Axe Position", jsonArrayAxe);
 		jsonObject.add("Boat Position", jsonArrayBoat);
@@ -64,7 +62,7 @@ public class Items {
 		writer.write(String.valueOf(jsonObject));
 		writer.close();
 
-		System.out.println("Saved JSON");
+		System.out.println("Saved JSON"); // Notification that the JSON file was saved successfully
 	}
 	
 }

@@ -10,8 +10,8 @@ import java.awt.Rectangle;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
-import com.google.gson.stream.JsonReader;
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
 import com.neet.DiamondHunter.Entity.Player;
@@ -45,6 +45,9 @@ public class PlayState extends GameState {
 	private int[] posBoat = new int[2]; // int array to set Boat position
 	private  int[] posAxe = new int[2]; // int array to set Axe position
 	private boolean posDefault = false; // Boolean to specify whether MapViewer has made changes to pos or not
+
+	private int[] extractedArrayAxe = new int[2];
+	private int[] extractedArrayBoat = new int[2];
 
 
 	// sparkles
@@ -88,10 +91,9 @@ public class PlayState extends GameState {
 		
 		// fill lists
 		populateDiamonds();
-		jsonReader();
         setPosAxe(posAxe); // setting both Axe position
         setPosBoat(posBoat); // setting Boat position
-		
+		jsonReader();
 		// initialize player
 		player.setTilePosition(17, 17);
 		player.setTotalDiamonds(diamonds.size());
@@ -185,15 +187,29 @@ public class PlayState extends GameState {
 	}
 
 	private void jsonReader() {
+		posDefault = true;
 		Gson gson = new Gson();
-
 		JsonElement jsonElement = null;
+
 		try {
 			jsonElement = gson.fromJson(new FileReader("C:\\Users\\User\\Documents\\GitHub\\Software_Maintenance_Course_Work2-\\file.json"), JsonElement.class);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println(jsonElement.toString());
+		// Converting the the JsonElement to a JsonObject then parsing the information to extract the array
+		JsonArray jsonArrayAxe = jsonElement.getAsJsonObject().get("Axe Position").getAsJsonArray();
+		JsonArray jsonArrayBoat = jsonElement.getAsJsonObject().get("Boat Position").getAsJsonArray();
+
+		extractedArrayAxe[0] = jsonArrayAxe.get(0).getAsInt();
+		extractedArrayAxe[1] = jsonArrayAxe.get(1).getAsInt();
+		setPosAxe(extractedArrayAxe);
+
+		extractedArrayBoat[0] = jsonArrayBoat.get(0).getAsInt();
+		extractedArrayBoat[1] = jsonArrayBoat.get(0).getAsInt();
+		setPosBoat(extractedArrayBoat);
+
+		System.out.println("The X is: " + jsonArrayAxe.get(0)); // Extracting the appropiate index from the JsonArray
+		System.out.println("This is the JSON being used: " + jsonElement.toString());
 	}
 
 	private int[] getPosAxe() {
