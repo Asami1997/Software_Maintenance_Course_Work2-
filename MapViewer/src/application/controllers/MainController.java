@@ -2,12 +2,12 @@ package application.controllers;
 
 import java.util.Observable;
 import java.util.Observer;
-
 import application.Main;
 import application.models.Items;
 import application.models.TileMap;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import application.MainGame.Game;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -60,6 +60,9 @@ public class MainController {
 	@FXML
 	private Label viewLbl;
 
+	@FXML
+	private Button playButton;
+	
 	@FXML
 	private GridPane mapviewer;
 	
@@ -187,6 +190,16 @@ public class MainController {
             	player1.setOpacity(0.3);
             	player2.setOpacity(0.3);
             	player3.setOpacity(0.3);
+            }
+        });
+        
+        playButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
+       	 
+            @Override
+            public void handle(MouseEvent event) {
+
+            	Game.runDHMainGame();
+    			Game.getWindow().setAutoRequestFocus(true);
             }
         });
 	}
