@@ -1,6 +1,7 @@
 package application.models;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Iterator;
@@ -23,6 +24,7 @@ public class TileMap extends Observable{
 
 	private int[][] map;
 	private String tileset;
+<<<<<<< HEAD
 	private String diamond = "images/diamond.gif";
 	private int[][] dpos = {
 		{20,20},
@@ -40,6 +42,32 @@ public class TileMap extends Observable{
 	Item dragging;
 	
 	public int[][] getMap() {
+=======
+	private String Item;
+	private int numCols;
+	private int numRows;	
+	static ImageView TempAxeView;
+	static int flag = 1;
+	int rowDragged;
+	int colDragged;
+	int indexDragged;
+	Image AxeImage;
+	Image boatImage;
+	ImageView source;
+	boolean isBoat = false;
+	int tileBefore;
+
+	static int AxeDesRow, AxeDesCol, BoatDesRow, BoatDesCol;
+
+	boolean fromBlocked = false;
+	ImageView view2;
+	MainController mainController = new MainController();
+
+	public TileMap() throws IOException {
+	}
+
+	public int[][] getMap(){
+>>>>>>> Elsayed_Branch
 		return map;
 	}
 
@@ -240,6 +268,7 @@ public class TileMap extends Observable{
 			stack.getChildren().remove(dragging.getView());
 		}
 		
+<<<<<<< HEAD
 		e.consume();
 	}
 	
@@ -267,6 +296,51 @@ public class TileMap extends Observable{
 				stack.getChildren().add(dragging.getView());
 				dragging.setCol(stack_col);
 				dragging.setRow(stack_row);
+=======
+			pane.add(view2, colDragged, rowDragged);
+
+        	System.out.println(GridPane.getColumnIndex(image2));
+        	
+			dragDetection(view2,tile_row,tile_col,scale,pane,true,tile);
+						
+			}else{
+				Dragboard db = event.getDragboard();
+    	
+	    	  boolean success = false;
+            if (db.hasImage()) {
+                System.out.println("Dropped: ");
+                
+                success = true;
+            }
+            
+            
+            if(isBoat == false){
+            	TempAxeView.setImage(image2.getImage());
+                image2.setImage(AxeImage);
+
+				AxeDesRow =  GridPane.getRowIndex(image2);
+				AxeDesCol = GridPane.getColumnIndex(image2);
+
+				System.out.println("Row and Column of Axe: " + AxeDesRow + " " + AxeDesCol);
+            }else{
+            	TempAxeView.setImage(image2.getImage());
+                image2.setImage(boatImage);
+                isBoat = false;
+
+				BoatDesRow = GridPane.getRowIndex(image2);
+				BoatDesCol = GridPane.getColumnIndex(image2);
+
+				System.out.println("Row and Column of Boat: " + BoatDesRow + " " + BoatDesCol);
+            }
+
+            image2.setViewport(new Rectangle2D(0,0, 16*scale, 16*scale));
+            
+            event.setDropCompleted(success);
+            event.consume();
+
+    		System.out.println(tile);
+    		
+>>>>>>> Elsayed_Branch
 			}
 			dragging = null;
 		}

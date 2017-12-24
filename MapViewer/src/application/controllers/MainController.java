@@ -1,7 +1,17 @@
 package application.controllers;
 
+<<<<<<< HEAD
 import java.util.Observable;
 import java.util.Observer;
+=======
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+
+>>>>>>> Elsayed_Branch
 
 import application.models.Items;
 import application.models.TileMap;
@@ -23,6 +33,7 @@ public class MainController {
 	@FXML
 	private Button loadBtn;
 
+<<<<<<< HEAD
 	@FXML
 	private Button saveBtn;
 
@@ -129,5 +140,115 @@ public class MainController {
 		focusPos[0] = (int) e.getScreenX();
 		focusPos[1] = (int) e.getScreenY();
 	}
+=======
+public class MainController {
+    
+	 @FXML
+	    private Button loadBtn;
+
+	    @FXML
+	    private Button saveBtn;
+
+	    @FXML
+	    private Button enlargeBtn;
+
+	    @FXML
+	    private Button shrinkBtn;
+
+	    @FXML
+	    private Button setBoatBtn;
+
+	    @FXML
+	    private Button setAxeBtn;
+
+	    @FXML
+	    private Button clearPosBtn;
+
+	    @FXML
+	    private ScrollPane mapscroll;
+	    
+	    
+	    @FXML
+	    private Label viewLbl;
+	    
+	    @FXML
+	    private GridPane mapviewer;
+	    
+	    @FXML
+	    private StackPane stackPane;
+	    
+	    private Image axeImage;
+	  
+	    int tileRow = -1;
+	    
+	    int tileCol = -1;          
+
+	    Image AxeImage;
+	    
+	    ImageView axeImageView;
+    
+       private TileMap tilemap;
+    
+       private double scale = 1;
+
+    public MainController() throws IOException {
+    }
+
+    public void initialize() throws IOException {
+    		
+			AxeImage = new Image("/images/axe.png", 16*scale, 16*scale, true, true);
+
+    		tilemap = new TileMap();
+    		tilemap.loadMap("/map.map");
+    		tilemap.loadTileSet("/images/tileset.gif");
+    		
+    		tilemap.render(mapviewer, scale);
+    		
+    		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
+    		
+    		enlargeBtn.setOnMouseClicked(e -> { this.zoomIn(e); });
+    		shrinkBtn.setOnMouseClicked(e -> { this.zoomOut(e); });
+    	
+    	}
+    	
+    	
+    	public void zoomIn(Event e) {
+    		if(scale>=5) return;
+    		
+    		scale = scale + 0.5;
+    		tilemap.render(mapviewer, scale);
+    		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
+    	}
+    	
+    	public void zoomOut(Event e) {
+    		if(scale<=1) return;
+    		
+    		scale = scale - 0.5;
+    		tilemap.render(mapviewer, scale);
+    		mapscroll.setMaxSize(mapviewer.getMinWidth()+3, mapviewer.getMinHeight()+3);
+    	}
+    	
+    	
+    	@FXML
+    	private void handleDragOver(DragEvent event){
+    		
+    		//Check If Tile Is Blocked
+    
+    		if(event.getDragboard().hasImage())
+    		event.acceptTransferModes(TransferMode.ANY);
+    	}
+
+
+      public void setAxeBack(int colDragged , int rowDragged){
+    	  
+    	  
+      }
+      // Calls method save when the save button is pressed
+      public void saveAction() throws IOException {
+          Items items = new Items();
+          items.save();
+      }
+
+>>>>>>> Elsayed_Branch
 
 }
