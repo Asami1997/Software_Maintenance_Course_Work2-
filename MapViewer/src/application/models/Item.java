@@ -3,15 +3,15 @@ package application.models;
 import javafx.scene.image.ImageView;
 
 public class Item {
-	
+
 	private String name;
-	
+
 	private int col;
-	
+
 	private int row;
-	
+
 	private ImageView view;
-	
+
 	public Item(String name, int col, int row, ImageView view) {
 		this.name = name;
 		this.col = col;
@@ -50,5 +50,5 @@ public class Item {
 	public void setView(ImageView view) {
 		this.view = view;
 	}
-	
+
 }

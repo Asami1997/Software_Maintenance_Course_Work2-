@@ -3,8 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Resources"/>
-	<classpathentry kind="lib" path="C:/Users/asami/Desktop/dh-cw2-master/dh-cw2-master/Libs/mp3spi1.9.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/asami/Desktop/dh-cw2-master/dh-cw2-master/Libs/tritonus_share.jar"/>
-	<classpathentry kind="lib" path="C:/Users/asami/Desktop/dh-cw2-master/dh-cw2-master/Libs/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="Libs/gson-2.8.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
