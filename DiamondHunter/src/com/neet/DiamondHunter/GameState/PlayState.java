@@ -7,7 +7,11 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
@@ -20,6 +24,8 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.TileMap.TileMap;
+
+import com.google.gson.*;
 
 public class PlayState extends GameState {
 	
@@ -34,7 +40,17 @@ public class PlayState extends GameState {
 	
 	// items
 	private ArrayList<Item> items;
-	
+
+	/* In order to change the position of the items, set posDefault to true and populate the 0th and 1st indexes of
+	each integer array with your desired x y position accordingly. */
+	private int[] posBoat = new int[2]; // int array to set Boat position
+	private  int[] posAxe = new int[2]; // int array to set Axe position
+	private boolean posDefault = false; // Boolean to specify whether MapViewer has made changes to pos or not
+
+	private int[] extractedArrayAxe = new int[2];
+	private int[] extractedArrayBoat = new int[2];
+
+
 	// sparkles
 	private ArrayList<Sparkle> sparkles;
 	
@@ -76,8 +92,9 @@ public class PlayState extends GameState {
 		
 		// fill lists
 		populateDiamonds();
-		populateItems();
-		
+        setPosAxe(posAxe); // setting both Axe position
+        setPosBoat(posBoat); // setting Boat position
+		jsonReader();
 		// initialize player
 		player.setTilePosition(17, 17);
 		player.setTotalDiamonds(diamonds.size());
@@ -169,22 +186,85 @@ public class PlayState extends GameState {
 		diamonds.add(d);
 		
 	}
-	
-	private void populateItems() {
-		
-		Item item;
-		
-		item = new Item(tileMap);
-		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
-		items.add(item);
-		
-		item = new Item(tileMap);
-		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
-		items.add(item);
-		
+
+	private void jsonReader() {
+		posDefault = true;
+		Gson gson = new Gson();
+		JsonElement jsonElement = null;
+		String filename = "file.json";
+		String workingDir = System.getProperty("user.dir");
+		String absPath = workingDir + File.separator + filename; // Makes path out of Java system commands
+
+		// Reads JSON from current working dir
+		try {
+			jsonElement = gson.fromJson(new FileReader(absPath), JsonElement.class);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		// Converting the the JsonElement to a JsonObject then parsing the information to extract the array
+		JsonArray jsonArrayAxe = jsonElement.getAsJsonObject().get("Axe Position").getAsJsonArray();
+		JsonArray jsonArrayBoat = jsonElement.getAsJsonObject().get("Boat Position").getAsJsonArray();
+
+		extractedArrayAxe[0] = jsonArrayAxe.get(0).getAsInt();
+		extractedArrayAxe[1] = jsonArrayAxe.get(1).getAsInt();
+		setPosAxe(extractedArrayAxe);
+
+		extractedArrayBoat[0] = jsonArrayBoat.get(0).getAsInt();
+		extractedArrayBoat[1] = jsonArrayBoat.get(0).getAsInt();
+		setPosBoat(extractedArrayBoat);
+
+		System.out.println("The X is: " + jsonArrayAxe.get(0)); // Extracting the appropiate index from the JsonArray
+		System.out.println("This is the JSON being used: " + jsonElement.toString());
 	}
+
+	private int[] getPosAxe() {
+		return posAxe;
+	}
+
+	private int[] getPosBoat() {
+		return posBoat;
+	}
+
+	private void setPosAxe(int[] posAxe) {
+		this.posAxe = posAxe;
+		Item item;
+		if(posDefault == false){ /* If condition to ensure that a position is specified by default if the user of
+        the MapViewer application does not specify one */
+			item = new Item(tileMap);
+			item.setType(Item.AXE);
+			item.setTilePosition(26, 37);
+			items.add(item);
+			posAxe[0] = 26; posAxe[1] = 37;
+		}
+		else{
+			item = new Item(tileMap);
+			item.setType(Item.AXE);
+			item.setTilePosition(getPosAxe()[0], getPosAxe()[1]);
+			items.add(item);
+			posAxe[0]=getPosAxe()[0]; posBoat[1]=getPosAxe()[0];
+		}
+	}
+
+	private void setPosBoat(int[] posBoat) {
+		this.posBoat = posBoat;
+		Item item;
+		if(posDefault == false){
+			item = new Item(tileMap);
+			item.setType(Item.BOAT);
+			item.setTilePosition(12, 4);
+			items.add(item);
+			posBoat[0] = 12; posBoat[1] = 4;
+			System.out.println(getPosBoat()[0] + " " + getPosBoat()[1] + " XY of Boat");
+		}
+		else{
+			item = new Item(tileMap);
+			item.setType(Item.BOAT);
+			item.setTilePosition(getPosBoat()[0], getPosBoat()[1]);
+			items.add(item);
+			getPosBoat()[0]=getPosBoat()[0]; posBoat[1]=getPosBoat()[0];
+		}
+	}
+
 	
 	public void update() {
 		

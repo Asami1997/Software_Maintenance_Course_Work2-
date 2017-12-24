@@ -4,6 +4,7 @@
 package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
+import java.io.FileNotFoundException;
 
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;

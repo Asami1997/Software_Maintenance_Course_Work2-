@@ -7,6 +7,7 @@
 package com.neet.DiamondHunter.Manager;
 
 import java.awt.Graphics2D;
+import java.io.FileNotFoundException;
 
 import com.neet.DiamondHunter.GameState.GameOverState;
 import com.neet.DiamondHunter.GameState.GameState;
@@ -49,19 +50,35 @@ public class GameStateManager {
 		currentState = i;
 		if(i == INTRO) {
 			gameStates[i] = new IntroState(this);
-			gameStates[i].init();
+			try {
+				gameStates[i].init();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 		else if(i == MENU) {
 			gameStates[i] = new MenuState(this);
-			gameStates[i].init();
+			try {
+				gameStates[i].init();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 		else if(i == PLAY) {
 			gameStates[i] = new PlayState(this);
-			gameStates[i].init();
+			try {
+				gameStates[i].init();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 		else if(i == GAMEOVER) {
 			gameStates[i] = new GameOverState(this);
-			gameStates[i].init();
+			try {
+				gameStates[i].init();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -78,7 +95,11 @@ public class GameStateManager {
 			pauseState.update();
 		}
 		else if(gameStates[currentState] != null) {
-			gameStates[currentState].update();
+			try {
+				gameStates[currentState].update();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

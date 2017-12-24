@@ -6,6 +6,7 @@
 package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
+import java.io.FileNotFoundException;
 
 import com.neet.DiamondHunter.Manager.GameStateManager;
 
@@ -17,9 +18,9 @@ public abstract class GameState {
 		this.gsm = gsm;
 	}
 	
-	public abstract void init();
-	public abstract void update();
+	public abstract void init() throws FileNotFoundException;
+	public abstract void update() throws FileNotFoundException;
 	public abstract void draw(Graphics2D g);
-	public abstract void handleInput();
+	public abstract void handleInput() throws FileNotFoundException;
 	
 }

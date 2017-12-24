@@ -5,6 +5,8 @@ package com.neet.DiamondHunter.GameState;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
@@ -31,8 +33,7 @@ public class IntroState extends GameState {
 		ticks = 0;
 		try {
 			logo = ImageIO.read(getClass().getResourceAsStream("/Logo/logo.gif"));
-		}
-		catch(Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
