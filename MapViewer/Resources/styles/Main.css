@@ -1,17 +1,40 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-#loadBtn{
-	-fx-background-color: #ff0000;
+#toolbar{
+	-fx-padding: 10px;
+	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 15.0, 0.5, 0, 0);
 }
 
-#loadBtn:hover{
-	-fx-background-color: #aa0000;
+.tool-btn{
+	-fx-margin-right: 5px;
+	-fx-background-color: #fff;
+	color: #000;
+	-fx-effect: dropshadow(gaussian, rgb(73,127,113), 1, 1.0, 3, 3);	
+	cursor: pointer;
+	-fx-padding: 5px 15px 5px 10px;
+    -fx-border-insets: 0 5px 0 0;
+    -fx-background-insets: 0 5px 0 0;
 }
 
-#enlargeBtn.pressed{
-	-fx-background-color: #00ff00;
+.tool-btn:hover{
+	-fx-effect: none;
 }
 
-#VAxeSource{
-	-fx-background-color: black;
+.grid{
+	-fx-background-color: #bbb;
+    -fx-vgap: 1;
+    -fx-hgap: 1;
+    -fx-padding: 1;
+}
+
+.hint-allow{
+	-fx-fill: rgba(46, 204, 113, 0.7);
+}
+
+.hint-block{
+	-fx-fill: rgba(231, 76, 60, 0.7);
+}
+
+.item{
+	-fx-cursor: hand;
 }
