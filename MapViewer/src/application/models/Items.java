@@ -6,6 +6,7 @@ import java.io.Writer;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.io.File;
 
 public class Items {
 
@@ -44,7 +45,15 @@ public class Items {
 	
 	//save position in json file format
 	public void save() throws IOException {
+
+    	// System file paths
+
+		String filename = "file.json";
+		String workingDir = System.getProperty("user.dir");
+		String absPath = workingDir + File.separator + filename;
+
     	// Created JSON Array for axe position
+		System.out.println("Json file created"); // Notification that the JSON file was saved successfully
 		JsonArray jsonArrayAxe = new JsonArray();
 		jsonArrayAxe.add(this.getAxePos()[0]);
 		jsonArrayAxe.add(this.getAxePos()[1]);
@@ -58,11 +67,11 @@ public class Items {
 		jsonObject.add("Boat Position", jsonArrayBoat);
 
 		// Saved JSON object into a file after converting it to a string
-		Writer writer = new FileWriter("C:\\Users\\User\\Documents\\GitHub\\Software_Maintenance_Course_Work2-\\file.json");
+		Writer writer = new FileWriter(absPath);
 		writer.write(String.valueOf(jsonObject));
 		writer.close();
 
-		System.out.println("Saved JSON"); // Notification that the JSON file was saved successfully
+		System.out.println("Saved JSON to " + absPath); // Notification that the JSON file was saved successfully
 	}
 	
 }

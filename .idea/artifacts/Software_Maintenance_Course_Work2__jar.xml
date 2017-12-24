@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Software_Maintenance_Course_Work2-:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Software_Maintenance_Course_Work2__jar</output-path>
+    <root id="archive" name="Software_Maintenance_Course_Work2-.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/DiamondHunter/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="MapViewer" />
+      <element id="module-output" name="Diamond Hunter" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/DiamondHunter/Libs/jl1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/DiamondHunter/Libs/mp3spi1.9.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/DiamondHunter/Libs/tritonus_share.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/gson-2.8.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

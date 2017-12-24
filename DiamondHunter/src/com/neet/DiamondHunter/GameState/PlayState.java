@@ -7,6 +7,7 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -190,9 +191,13 @@ public class PlayState extends GameState {
 		posDefault = true;
 		Gson gson = new Gson();
 		JsonElement jsonElement = null;
+		String filename = "file.json";
+		String workingDir = System.getProperty("user.dir");
+		String absPath = workingDir + File.separator + filename; // Makes path out of Java system commands
 
+		// Reads JSON from current working dir
 		try {
-			jsonElement = gson.fromJson(new FileReader("C:\\Users\\User\\Documents\\GitHub\\Software_Maintenance_Course_Work2-\\file.json"), JsonElement.class);
+			jsonElement = gson.fromJson(new FileReader(absPath), JsonElement.class);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
