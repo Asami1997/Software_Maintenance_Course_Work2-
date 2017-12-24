@@ -7,9 +7,11 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.Observable;
 
+import application.controllers.MainController;
 import javafx.event.Event;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -21,8 +23,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
 public class TileMap extends Observable{
-
+	
 	private int[][] map;
+	private PlayerAnimation playerAnimation = new PlayerAnimation();
 	private String tileset;
 <<<<<<< HEAD
 	private String diamond = "images/diamond.gif";
@@ -38,6 +41,8 @@ public class TileMap extends Observable{
 	private int active_col = -1;
 	private int active_row = -1;
 	private String active_type = null;
+	
+	MainController mainController = new MainController();
 	
 	Item dragging;
 	
@@ -156,12 +161,23 @@ public class TileMap extends Observable{
 				//tile stack
 				StackPane stack = new StackPane();
 				
-				//render tile background
-				ImageView view = new ImageView(image);
-				view.setViewport(
-							new Rectangle2D(tile_col * 16 * scale, tile_row * 16 * scale, 16 * scale, 16 * scale));
-				stack.getChildren().add(view);
-				
+				if(row == 17 && col == 17){
+					
+					//render tile background
+					ImageView view = playerAnimation.startAnimation();
+					view.setViewport(
+								new Rectangle2D(tile_col * 16 * scale, tile_row * 16 * scale, 16 * scale, 16 * scale));
+					stack.getChildren().add(view);
+					
+				}else{
+					
+					//render tile background
+					ImageView view = new ImageView(image);
+					view.setViewport(
+								new Rectangle2D(tile_col * 16 * scale, tile_row * 16 * scale, 16 * scale, 16 * scale));
+					stack.getChildren().add(view);
+				}
+			
 				//render item
 				Item item = items.get(col, row);
 				if(item != null) 
@@ -205,6 +221,7 @@ public class TileMap extends Observable{
 		
 		case 1: 
 			active_type = "Grass";
+			
 		    break;
 		case 2 : 
 			active_type = "Bush";
@@ -220,8 +237,10 @@ public class TileMap extends Observable{
 			break;
 		default:
 			active_type = " Green Tree";
+			
+			
 		}
-		
+
 		//notify active tile changed
 		setChanged();
 		notifyObservers();
@@ -351,4 +370,7 @@ public class TileMap extends Observable{
 		e.setDropCompleted(success);
 		e.consume();
 	}
+	
+	//store tileType text area in main controller temporarily 
+
 }
