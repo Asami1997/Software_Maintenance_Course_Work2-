@@ -25,7 +25,7 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			//changing cursor image
-			scene.setCursor(new ImageCursor(new Image("images/cursor1.png")));
+			scene.setCursor(new ImageCursor(new Image("images/2dCusor.png")));
 			
 		} catch(Exception e) {
 			e.printStackTrace();

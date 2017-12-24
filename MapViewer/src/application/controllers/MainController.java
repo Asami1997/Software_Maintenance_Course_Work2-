@@ -7,7 +7,6 @@ import application.models.Items;
 import application.models.TileMap;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import application.MainGame.Game;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -193,6 +192,7 @@ public class MainController {
             }
         });
         
+        /*
         playButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
        	 
             @Override
@@ -202,6 +202,7 @@ public class MainController {
     			Game.getWindow().setAutoRequestFocus(true);
             }
         });
+        */
 	}
 	
 	public class ActiveTileObserver implements Observer{

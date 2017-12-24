@@ -24,6 +24,7 @@ import javafx.scene.shape.Rectangle;
 public class TileMap extends Observable{
 	
 	private int[][] map;
+	private PlayerAnimation playerAnimation = new PlayerAnimation();
 	private String tileset;
 	private String diamond = "images/diamond.gif";
 	private int[][] dpos = {
@@ -132,12 +133,23 @@ public class TileMap extends Observable{
 				//tile stack
 				StackPane stack = new StackPane();
 				
-				//render tile background
-				ImageView view = new ImageView(image);
-				view.setViewport(
-							new Rectangle2D(tile_col * 16 * scale, tile_row * 16 * scale, 16 * scale, 16 * scale));
-				stack.getChildren().add(view);
-				
+				if(row == 17 && col == 17){
+					
+					//render tile background
+					ImageView view = playerAnimation.startAnimation();
+					view.setViewport(
+								new Rectangle2D(tile_col * 16 * scale, tile_row * 16 * scale, 16 * scale, 16 * scale));
+					stack.getChildren().add(view);
+					
+				}else{
+					
+					//render tile background
+					ImageView view = new ImageView(image);
+					view.setViewport(
+								new Rectangle2D(tile_col * 16 * scale, tile_row * 16 * scale, 16 * scale, 16 * scale));
+					stack.getChildren().add(view);
+				}
+			
 				//render item
 				Item item = items.get(col, row);
 				if(item != null) 

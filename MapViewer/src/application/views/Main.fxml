@@ -18,43 +18,43 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
    <children>
-      <HBox prefHeight="700.0" prefWidth="900.0" style="-fx-background-image: url(&quot;images/sharp2.jpg&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: cover, auto;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="700.0" prefWidth="900.0" style="-fx-background-image: url(&quot;images/back.png&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: cover, auto;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <StackPane minWidth="213.0" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0" />
                   <VBox prefHeight="700.0" prefWidth="269.0">
                      <children>
-                        <VBox prefHeight="190.0" prefWidth="213.0">
+                        <VBox prefHeight="276.0" prefWidth="301.0">
                            <children>
-                              <ImageView fitHeight="39.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Resources/images/tiletype.png" />
-                                 </image>
-                              </ImageView>
-                              <TextArea fx:id="tileType" editable="false" prefHeight="112.0" prefWidth="213.0" text="&#10;         &#10;&#10;">
-                                 <VBox.margin>
-                                  
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="Curlz MT" size="24.0" />
-                                 </font>
-                              </TextArea>
                               <ImageView fitHeight="39.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Resources/images/coordinates.png" />
                                  </image>
                               </ImageView>
-                              <TextArea fx:id="tileCoordinate" editable="false" prefHeight="113.0" prefWidth="215.0" text="&#10;&#10;">
+                              <TextArea fx:id="tileCoordinate" editable="false" prefHeight="93.0" prefWidth="215.0" style="-fx-font: Tahoma; -fx-font-size: 32px; -fx-f: ;" text="&#10;&#10;">
                                  <font>
-                                    <Font name="Curlz MT" size="24.0" />
+                                    <Font name="Arial" size="20.0" />
                                  </font></TextArea>
+                              <ImageView fitHeight="39.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Resources/images/tiletype.png" />
+                                 </image>
+                              </ImageView>
+                              <TextArea fx:id="tileType" editable="false" prefHeight="97.0" prefWidth="215.0" text="&#10;   &#10;&#10;">
+                                 <VBox.margin>
+                                  
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Arial" size="20.0" />
+                                 </font>
+                              </TextArea>
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </VBox>
-                        <HBox alignment="CENTER" prefHeight="105.0" prefWidth="213.0" VBox.vgrow="ALWAYS">
+                        <HBox alignment="CENTER" prefHeight="102.0" prefWidth="202.0" VBox.vgrow="ALWAYS">
                            <children>
                               <ImageView fitHeight="21.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                  <image>
@@ -77,12 +77,12 @@
                                     <Image url="@../../../Resources/images/player1.gif" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="player2" fitHeight="88.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                              <ImageView fx:id="player2" fitHeight="82.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                                  <image>
                                     <Image url="@../../../Resources/images/player2.gif" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="player3" fitHeight="83.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                              <ImageView fx:id="player3" fitHeight="88.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                                  <image>
                                     <Image url="@../../../Resources/images/player3.gif" />
                                  </image>
@@ -101,8 +101,8 @@
                               <ColumnConstraints />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints />
-                              <RowConstraints />
+                              <RowConstraints maxHeight="174.0" minHeight="82.0" prefHeight="89.0" />
+                              <RowConstraints maxHeight="92.0" minHeight="0.0" prefHeight="85.0" />
                               <RowConstraints />
                               <RowConstraints />
                               <RowConstraints />
@@ -112,21 +112,25 @@
 
       
                               </GridPane>
-                        <Button fx:id="playButton" mnemonicParsing="false" prefHeight="157.0" prefWidth="213.0" style="-fx-padding: 8 15 15 15; -fx-background-insets: 0 0 0 5 0, 0 0 6 0,0 0 7 0; -fx-background-radius: 8; -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold;">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Georgia Bold" size="41.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Resources/images/play.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="playButton" mnemonicParsing="false" prefHeight="182.0" prefWidth="226.0" style="-fx-padding: 8 15 15 15; -fx-background-insets: 0 0 0 5 0, 0 0 6 0,0 0 7 0; -fx-background-radius: 8; -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold;">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Georgia Bold" size="41.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Resources/images/play.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>
@@ -140,25 +144,54 @@
                               <GridPane>
       
                                        <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" />
-                                    <ImageView fitHeight="135.0" fitWidth="495.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../Resources/images/arcade-font-writer.png" />
-                                       </image>
-                                       <GridPane.margin>
-                                          <Insets top="10.0" />
-                                       </GridPane.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="122.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
-                                       <image>
-                                          <Image url="@../../../Resources/images/boat.png" />
-                                       </image>
-                                    </ImageView>
-                                    <ImageView fitHeight="108.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <image>
-                                          <Image url="@../../../Resources/images/axe.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <ImageView fitHeight="61.0" fitWidth="650.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../Resources/images/arcade-font-writer.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children></VBox>
+                                    <GridPane hgap="1.0" prefHeight="70.0" prefWidth="130.0" vgap="1.0" GridPane.columnIndex="1">
+                                      
+                                                   <children>
+                                          <Button fx:id="shrinkBtn" mnemonicParsing="false" prefHeight="84.0" prefWidth="96.0" style="-fx-background-color: transparent; -fx-font-size: 32px; -fx-font-weight: bold; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" text="-" textFill="#ffe100" GridPane.columnIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="20.0" top="130.0" />
+                                             </GridPane.margin>
+                                          </Button>
+                                          <ImageView fitHeight="23.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                                             <image>
+                                                <Image url="@../../../Resources/images/zoom.png" />
+                                             </image>
+                                             <GridPane.margin>
+                                                <Insets top="140.0" />
+                                             </GridPane.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="102.0" prefWidth="44.0">
+                                             <GridPane.margin>
+                                                <Insets top="130.0" />
+                                             </GridPane.margin>
+                                             <children>
+                                                <Button fx:id="enlargeBtn" mnemonicParsing="false" prefHeight="54.0" prefWidth="63.0" style="-fx-background-color: transparent; -fx-font-size: 32px; -fx-font-weight: bold; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" text="+" textFill="#e1c704">
+                                                   <font>
+                                                      <Font size="27.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints />
+                                          <ColumnConstraints />
+                                          <ColumnConstraints />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints />
+                                          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                       </rowConstraints>
+                                    </GridPane>
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints maxWidth="489.0" minWidth="140.0" prefWidth="197.0" />
@@ -173,49 +206,6 @@
                               </GridPane>
                            </children>
                         </StackPane>
-                        <GridPane hgap="1.0" prefHeight="70.0" prefWidth="130.0" vgap="1.0">
-                          
-                           <children>
-                              <Button fx:id="shrinkBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="76.0" style="-fx-background-color: transparent; -fx-font-size: 32px; -fx-font-weight: bold; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" text="-" textFill="#ffe100" GridPane.columnIndex="2">
-                                 <GridPane.margin>
-                                    <Insets left="20.0" top="130.0" />
-                                 </GridPane.margin>
-                              </Button>
-                              <ImageView fitHeight="21.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                                 <image>
-                                    <Image url="@../../../Resources/images/zoom.png" />
-                                 </image>
-                                 <GridPane.margin>
-                                    <Insets top="140.0" />
-                                 </GridPane.margin>
-                              </ImageView>
-                              <VBox prefHeight="102.0" prefWidth="44.0">
-                                 <GridPane.margin>
-                                    <Insets top="130.0" />
-                                 </GridPane.margin>
-                                 <children>
-                                    <Button fx:id="enlargeBtn" mnemonicParsing="false" prefHeight="54.0" prefWidth="63.0" style="-fx-background-color: transparent; -fx-font-size: 32px; -fx-font-weight: bold; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" text="+" textFill="#e1c704">
-                                       <font>
-                                          <Font size="27.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="50.0" />
-                           </HBox.margin>
-                           <columnConstraints>
-                              <ColumnConstraints />
-                              <ColumnConstraints />
-                              <ColumnConstraints />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints />
-                              <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-                              <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-                           </rowConstraints>
-                        </GridPane>
                      </children>
                   </HBox>
                  <ScrollPane fx:id="mapscroll" HBox.hgrow="ALWAYS">
