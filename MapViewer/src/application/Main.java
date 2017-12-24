@@ -21,7 +21,7 @@ public class Main extends Application {
 			scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/styles/Main.css").toExternalForm());
 
-			primaryStage.setTitle("Viola Map Editor");
+			primaryStage.setTitle("Map Editor");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 

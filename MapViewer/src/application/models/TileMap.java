@@ -27,7 +27,11 @@ public class TileMap extends Observable {
 	private PlayerAnimation playerAnimation = new PlayerAnimation();
 	private String tileset;
 	private String diamond = "images/diamond.gif";
-	private int[][] dpos = { { 20, 20 }, { 12, 36 }, { 28, 4 }, { 4, 34 } };
+	private int[][] dpos = { 
+			{ 20, 20 }, { 12, 36 }, { 28, 4 }, { 4, 34 }, {28,19}, 
+			{35,26}, {38,36}, {27,28}, {20,30}, {14,25}, {4,21} ,
+			{9,14}, {4,3}, {20,14}, {13,20}
+	};
 	private int numCols = -1;
 	private int numRows = -1;
 
@@ -177,6 +181,7 @@ public class TileMap extends Observable {
 				});
 				stack.setOnDragDropped(e -> {
 					this.dropItem(e, grid, stack);
+					items.save();
 				});
 			}
 		}

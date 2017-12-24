@@ -11,14 +11,20 @@ import java.io.File;
 
 public class Items {
 
-	private Item[] items = { new Item("axe", 20, 20, new ImageView()), new Item("boat", 20, 13, new ImageView()), };
+	private Item[] items = { new Item("axe", 37, 26, new ImageView()), new Item("boat", 4, 12, new ImageView()) };
 
 	private Item axe = items[0];
 
 	private Item boat = items[1];
-
+	
+	private String player_skin;
+	
+	public void setPlayerSkin(String s) {
+		this.player_skin = s;
+	}
+	
 	// save position in json file format
-	public void save(String s) {
+	public void save() {
 		// System file paths
 		String filename = "file.json";
 		String workingDir = System.getProperty("user.dir");
@@ -37,6 +43,7 @@ public class Items {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.add("Axe Position", jsonArrayAxe);
 		jsonObject.add("Boat Position", jsonArrayBoat);
+		jsonObject.addProperty("player_skin", this.player_skin);
 
 		// Saved JSON object into a file after converting it to a string
 		Writer writer;

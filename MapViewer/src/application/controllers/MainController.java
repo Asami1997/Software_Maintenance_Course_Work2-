@@ -1,5 +1,11 @@
 package application.controllers;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.Process;
+import java.lang.Runtime;
 import java.util.Observable;
 import java.util.Observer;
 import application.Main;
@@ -47,9 +53,9 @@ public class MainController {
 	@FXML
 	private Button clearPosBtn;
 
-	@FXML 
+	@FXML
 	private TextArea tileType;
-	
+
 	@FXML
 	private TextArea tileCoordinate;
 
@@ -61,18 +67,18 @@ public class MainController {
 
 	@FXML
 	private Button playButton;
-	
+
 	@FXML
 	private GridPane mapviewer;
-	
+
 	@FXML
 	private AnchorPane itemviewer;
 
 	@FXML
 	private StackPane stackPane;
-	
+
 	private TileMap tilemap;
-	
+
 	private Items items;
 
 	static boolean b = false;
@@ -82,134 +88,164 @@ public class MainController {
 
 	@FXML
 	private ImageView player1;
-	
+
 	@FXML
 	private ImageView player2;
-	
+
 	@FXML
 	private ImageView player3;
-	
+
 	@FXML
 	private ImageView player4;
-	
-	//contains the path to the chosen player
-	@FXML 
+
+	// contains the path to the chosen player
+	@FXML
 	private String chosenPlayerPath;
-	
-	int[] focusPos = {-1, -1};
+
+	int[] focusPos = { -1, -1 };
 	private double scale = 1;
 
 	Main mains = new Main();
-	
-	public void initialize() {
-		//load items resources
 
+	public void initialize() {
+		// load items resources
 		items = new Items();
 		items.init(scale);
-		
-		//load resources and render Tilemap
+
+		// load resources and render Tilemap
 		tilemap = new TileMap();
-		//storing it temporarily to avoid null pointer exception error 
-		storeTextArea(tileType,tileCoordinate);
+		// storing it temporarily to avoid null pointer exception error
+		storeTextArea(tileType, tileCoordinate);
 		tilemap.loadMap("/map.map");
 		tilemap.loadTileSet("/images/tileset.gif");
 		tilemap.loadDiamond("/images/diamond.gif");
 		tilemap.render(mapviewer, items, scale);
-		
-		//listen to active tile
+
+		// listen to active tile
 		tilemap.addObserver(new ActiveTileObserver());
-		
-		//scroll pane align center of parent
+
+		// scroll pane align center of parent
 		mapscroll.setMaxSize(mapviewer.getMinWidth() + 3, mapviewer.getMinHeight() + 3);
 
-		//focus scroll pane to cursor location
-		mapscroll.setOnMouseEntered(e -> { this.focusPos(e); });
-		mapscroll.setOnMouseMoved(e -> { this.focusPos(e); });
+		// focus scroll pane to cursor location
+		mapscroll.setOnMouseEntered(e -> {
+			this.focusPos(e);
+		});
+		mapscroll.setOnMouseMoved(e -> {
+			this.focusPos(e);
+		});
 
-		//enlarge and shrink viewport
-		enlargeBtn.setOnMouseClicked(e -> { this.zoomIn(e); });
-		shrinkBtn.setOnMouseClicked(e -> { this.zoomOut(e); });
-		  
-        player1.setOnMouseClicked(new EventHandler<MouseEvent>(){
+		// enlarge and shrink viewport
+		enlargeBtn.setOnMouseClicked(e -> {
+			this.zoomIn(e);
+		});
+		shrinkBtn.setOnMouseClicked(e -> {
+			this.zoomOut(e);
+		});
 
-            @Override
-            public void handle(MouseEvent event) {
-             
-            	chosenPlayerPath = "images/player1.gif";
-            	
-            	player1.setOpacity(1);
-            	
-            	player2.setOpacity(0.3);
-            	player3.setOpacity(0.3);
-            	player4.setOpacity(0.3);
-            }
-        });
-	
-        player2.setOnMouseClicked(new EventHandler<MouseEvent>(){
-        	 
-            @Override
-            public void handle(MouseEvent event) {
-            
-            	chosenPlayerPath = "images/player2.gif";
-            	
-            	player2.setOpacity(1);
-            	
-            	player1.setOpacity(0.3);
-            	player3.setOpacity(0.3);
-            	player4.setOpacity(0.3);
-            }
-        });
-	
-        player3.setOnMouseClicked(new EventHandler<MouseEvent>(){
-       	 
-            @Override
-            public void handle(MouseEvent event) {
-              
-            	chosenPlayerPath = "images/player3.gif";
-            	
-            	player3.setOpacity(1);
-            	
-            	player1.setOpacity(0.3);
-            	player2.setOpacity(0.3);
-            	player4.setOpacity(0.3);
-            	
-            	
-            }
-        });
-        
-        player4.setOnMouseClicked(new EventHandler<MouseEvent>(){
-       	 
-            @Override
-            public void handle(MouseEvent event) {
+		player1.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-            	chosenPlayerPath = "images/player4.gif";
-            	
-            	player4.setOpacity(1);
-            	
-            	player1.setOpacity(0.3);
-            	player2.setOpacity(0.3);
-            	player3.setOpacity(0.3);
-            }
-        });
-        
-        /*
-        playButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
-       	 
-            @Override
-            public void handle(MouseEvent event) {
-            	Game.runDHMainGame();
-    			Game.getWindow().setAutoRequestFocus(true);
-            }
-        });
-        */
+			@Override
+			public void handle(MouseEvent event) {
+
+				chosenPlayerPath = "images/player1.gif";
+				items.setPlayerSkin(chosenPlayerPath);
+				items.save();
+
+				player1.setOpacity(1);
+				player2.setOpacity(0.3);
+				player3.setOpacity(0.3);
+				player4.setOpacity(0.3);
+			}
+		});
+
+		player2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+
+				chosenPlayerPath = "images/player2.gif";
+				items.setPlayerSkin(chosenPlayerPath);
+				items.save();
+
+				player2.setOpacity(1);
+
+				player1.setOpacity(0.3);
+				player3.setOpacity(0.3);
+				player4.setOpacity(0.3);
+			}
+		});
+
+		player3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+
+				chosenPlayerPath = "images/player3.gif";
+				items.setPlayerSkin(chosenPlayerPath);
+				items.save();
+
+				player3.setOpacity(1);
+
+				player1.setOpacity(0.3);
+				player2.setOpacity(0.3);
+				player4.setOpacity(0.3);
+
+			}
+		});
+
+		player4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+
+				chosenPlayerPath = "images/player4.gif";
+				items.setPlayerSkin(chosenPlayerPath);
+				items.save();
+
+				player4.setOpacity(1);
+
+				player1.setOpacity(0.3);
+				player2.setOpacity(0.3);
+				player3.setOpacity(0.3);
+			}
+		});
+
+		playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				try {
+					Process proc = Runtime.getRuntime().exec("java -jar diamondhunter.jar");
+					InputStream in = proc.getInputStream();
+					InputStream err = proc.getErrorStream();
+					
+					String line;
+					BufferedReader br = new BufferedReader(new InputStreamReader(in));
+					while ((line = br.readLine()) != null) {
+						System.out.println(line);
+					}
+					br = new BufferedReader(new InputStreamReader(err));
+					while ((line = br.readLine()) != null) {
+						System.out.println(line);
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
 	}
-	
-	public class ActiveTileObserver implements Observer{
+
+	public class ActiveTileObserver implements Observer {
 		@Override
 		public void update(Observable o, Object arg) {
-			System.out.println("Active: " + ((TileMap) o).getActiveCol() + " " + ((TileMap) o).getActiveRow() + " " + ((TileMap) o).getActiveType());
+			System.out.println("Active: " + ((TileMap) o).getActiveCol() + " " + ((TileMap) o).getActiveRow() + " "
+					+ ((TileMap) o).getActiveType());
 
-			changeTileType(((TileMap) o).getActiveType(),"("+((TileMap) o).getActiveRow()+")" + "," + "("+((TileMap) o).getActiveCol()+")");
+			changeTileType(((TileMap) o).getActiveType(),
+					"(" + ((TileMap) o).getActiveRow() + ")" + "," + "(" + ((TileMap) o).getActiveCol() + ")");
 		}
 	}
 
@@ -232,30 +268,30 @@ public class MainController {
 		tilemap.render(mapviewer, items, scale);
 		mapscroll.setMaxSize(mapviewer.getMinWidth() + 3, mapviewer.getMinHeight() + 3);
 	}
-	
+
 	public void focusPos(MouseEvent e) {
-		if(focusPos[0] != -1 && focusPos[1] != -1) {
-			//scroll according movement difference and direction
+		if (focusPos[0] != -1 && focusPos[1] != -1) {
+			// scroll according movement difference and direction
 			mapscroll.setHvalue(mapscroll.getHvalue() + (e.getScreenX() - focusPos[0]) * 0.0025 * (1 / scale));
 			mapscroll.setVvalue(mapscroll.getVvalue() + (e.getScreenY() - focusPos[1]) * 0.0025 * (1 / scale));
 		}
-		
-		//new reference point
+
+		// new reference point
 		focusPos[0] = (int) e.getScreenX();
 		focusPos[1] = (int) e.getScreenY();
 	}
 
-	//this function changes the text area that contain the tile type 
-	public void changeTileType(String activeType,String activeCoordinates){
+	// this function changes the text area that contain the tile type
+	public void changeTileType(String activeType, String activeCoordinates) {
 
-	  tempTypeTA.setText(activeType);
-	  
-	  tempCoordinateTA.setText(activeCoordinates);
-		  
+		tempTypeTA.setText(activeType);
+
+		tempCoordinateTA.setText(activeCoordinates);
+
 	}
-	
-	public void storeTextArea(TextArea tileType,TextArea tileCoordinate){
-		
+
+	public void storeTextArea(TextArea tileType, TextArea tileCoordinate) {
+
 		tempTypeTA = tileType;
 		tempCoordinateTA = tileCoordinate;
 	}
